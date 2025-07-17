@@ -15,8 +15,8 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-    title: "HackSV",
-    description: "HackSV Countdown",
+    title: "hack.sv",
+    description: "👀",
 };
 
 export default function RootLayout({

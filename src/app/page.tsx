@@ -32,7 +32,6 @@ function VirtualizedImage({
 }: VirtualizedImageProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [shouldLoad, setShouldLoad] = useState(false);
-    const [hasLoaded, setHasLoaded] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
 
@@ -82,20 +81,19 @@ function VirtualizedImage({
             }}
         >
             {shouldLoad && (
-                // Use regular img tag to bypass Vercel image optimization for CDN images
                 <img
                     ref={imageRef}
                     src={src}
                     alt={alt}
+                    width={width}
+                    height={height}
                     className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
                         isVisible ? "opacity-100" : "opacity-0"
                     } ${className || ""}`}
                     onLoad={() => {
-                        setHasLoaded(true);
                         onLoad?.();
                     }}
                     loading="lazy"
-                    decoding="async"
                     style={{
                         width: "100%",
                         height: "100%",
@@ -135,8 +133,8 @@ async function fetchAllImages(): Promise<string[]> {
 
 // Header Component
 interface HeaderProps {
-    logoY: any;
-    logoScale: any;
+    logoY: import("framer-motion").MotionValue<number>;
+    logoScale: import("framer-motion").MotionValue<number>;
 }
 
 function Header({ logoY, logoScale }: HeaderProps) {
@@ -144,14 +142,31 @@ function Header({ logoY, logoScale }: HeaderProps) {
         const currentScrollY = window.scrollY;
 
         // Get the global Lenis instance
-        const lenis = (window as any).lenis;
+        const lenis = (
+            window as typeof window & {
+                lenis?: {
+                    scrollTo: (
+                        target: number,
+                        options?: {
+                            duration?: number;
+                            easing?: (t: number) => number;
+                        }
+                    ) => void;
+                };
+            }
+        ).lenis;
 
         if (currentScrollY <= 600) {
             // Scroll down past the quote section with Lenis for smooth animation
             if (lenis) {
                 lenis.scrollTo(700, {
-                    duration: 2,
-                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                    duration: 1.2,
+                    easing: (t: number) => {
+                        // Significant ease in and out (cubic-bezier-like curve)
+                        return t < 0.5
+                            ? 4 * t * t * t
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    },
                 });
             } else {
                 window.scrollTo({ top: 700, behavior: "smooth" });
@@ -160,8 +175,13 @@ function Header({ logoY, logoScale }: HeaderProps) {
             // Scroll to top with Lenis
             if (lenis) {
                 lenis.scrollTo(0, {
-                    duration: 1.5,
-                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                    duration: 1.0,
+                    easing: (t: number) => {
+                        // Significant ease in and out (cubic-bezier-like curve)
+                        return t < 0.5
+                            ? 4 * t * t * t
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    },
                 });
             } else {
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -460,7 +480,7 @@ function QuotesCarousel() {
                             style={{ width: `${width}px` }}
                         >
                             <span className="text-white text-lg font-bold whitespace-nowrap">
-                                "{quote}"
+                                &ldquo;{quote}&rdquo;
                             </span>
                         </div>
                     );
@@ -482,7 +502,7 @@ export default function Home() {
         });
 
         // Make Lenis globally available
-        (window as any).lenis = lenis;
+        (window as typeof window & { lenis?: typeof lenis }).lenis = lenis;
 
         function raf(time: number) {
             lenis.raf(time);
@@ -493,7 +513,7 @@ export default function Home() {
 
         return () => {
             lenis.destroy();
-            delete (window as any).lenis;
+            delete (window as typeof window & { lenis?: typeof lenis }).lenis;
         };
     }, []);
 

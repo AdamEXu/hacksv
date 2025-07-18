@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Lenis from "lenis";
 
@@ -47,20 +47,15 @@ function VirtualizedImage({
                     if (entry.isIntersecting) {
                         setShouldLoad(true);
                         setIsVisible(true);
-                    } else {
-                        // Keep loaded for a short while to avoid flickering during fast scrolling
-                        setTimeout(() => {
-                            if (!entry.isIntersecting) {
-                                setIsVisible(false);
-                            }
-                        }, 1000);
                     }
+                    // Removed unloading logic completely to prevent vertical scroll issues
+                    // Images will stay loaded once they're loaded for better UX
                 });
             },
             {
-                // Smaller margins for faster initial loading
-                // Only preload images that are very close to viewport
-                rootMargin: "100% 100%",
+                // Larger horizontal margins, smaller vertical margins
+                // Focus on horizontal scrolling, not vertical
+                rootMargin: "50% 150%",
                 threshold: 0,
             }
         );
@@ -72,40 +67,9 @@ function VirtualizedImage({
         };
     }, []);
 
-    // Unload images that are far from viewport to save memory
-    useEffect(() => {
-        if (!shouldLoad) return;
-
-        const element = elementRef.current;
-        if (!element) return;
-
-        const unloadObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        // More aggressive unloading for memory management
-                        setTimeout(() => {
-                            if (!entry.isIntersecting) {
-                                setShouldLoad(false);
-                                setIsVisible(false);
-                            }
-                        }, 3000); // Reduced from 5000ms to 3000ms
-                    }
-                });
-            },
-            {
-                // Smaller margin for unloading - more aggressive memory management
-                rootMargin: "50% 50%",
-                threshold: 0,
-            }
-        );
-
-        unloadObserver.observe(element);
-
-        return () => {
-            unloadObserver.disconnect();
-        };
-    }, [shouldLoad]);
+    // Disable aggressive unloading - let initial loading observer handle virtualization
+    // The initial observer with large horizontal margins is sufficient for memory management
+    // Aggressive unloading causes issues with vertical scrolling
 
     return (
         <div
@@ -170,15 +134,45 @@ async function fetchAllImages(): Promise<string[]> {
 }
 
 // Header Component
-function Header() {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+interface HeaderProps {
+    logoY: any;
+    logoScale: any;
+}
+
+function Header({ logoY, logoScale }: HeaderProps) {
+    const handleLogoClick = () => {
+        const currentScrollY = window.scrollY;
+
+        // Get the global Lenis instance
+        const lenis = (window as any).lenis;
+
+        if (currentScrollY <= 600) {
+            // Scroll down past the quote section with Lenis for smooth animation
+            if (lenis) {
+                lenis.scrollTo(700, {
+                    duration: 2,
+                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                });
+            } else {
+                window.scrollTo({ top: 700, behavior: "smooth" });
+            }
+        } else {
+            // Scroll to top with Lenis
+            if (lenis) {
+                lenis.scrollTo(0, {
+                    duration: 1.5,
+                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }
     };
 
     return (
         <header
             style={{ backgroundColor: CYAN_COLOR }}
-            className="h-[132px] flex items-center justify-between px-8 relative"
+            className="h-[132px] flex items-center justify-between px-8 sticky top-0 z-50"
         >
             {/* Left side - Sign Up & Discord */}
             <div className="flex items-center space-x-6">
@@ -201,21 +195,29 @@ function Header() {
             </div>
 
             {/* Center - Logo (clickable to scroll to top) */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <motion.div
+                className="fixed left-1/2 top-0 z-[100]"
+                style={{
+                    x: "-50%",
+                    y: logoY,
+                    scale: logoScale,
+                    transformOrigin: "center center",
+                }}
+            >
                 <button
-                    onClick={scrollToTop}
+                    onClick={handleLogoClick}
                     className="cursor-pointer transition-transform hover:scale-105"
                     aria-label="Scroll to top"
                 >
                     <Image
                         src="/logo.svg"
                         alt="hack.sv logo"
-                        width={160}
-                        height={100}
-                        className="w-[160px] h-[100px]"
+                        width={455}
+                        height={294}
+                        className="w-[160px] h-[103px] object-contain"
                     />
                 </button>
-            </div>
+            </motion.div>
 
             {/* Right side - Dashboard */}
             <div>
@@ -231,7 +233,6 @@ function Header() {
         </header>
     );
 }
-
 // Image Grid Component - This represents the main visual area from the Figma
 interface ImageGridProps {
     images: string[];
@@ -283,10 +284,10 @@ function ImageGrid({ images }: ImageGridProps) {
     }, []);
 
     if (images.length === 0) {
-        // Show cyan background placeholder with exact carousel heights matching space-y-4
+        // Show cyan background placeholder with exact carousel heights
         return (
             <div className="w-full" style={{ backgroundColor: CYAN_COLOR }}>
-                <div className="space-y-4">
+                <div>
                     <div className="h-[300px]"></div>
                     <div className="h-[300px]"></div>
                 </div>
@@ -366,7 +367,7 @@ function ImageGrid({ images }: ImageGridProps) {
     return (
         <div className="w-full" style={{ backgroundColor: CYAN_COLOR }}>
             <motion.div
-                className="w-full space-y-4"
+                className="w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: imagesLoaded ? 1 : 0 }}
                 transition={{ duration: 0.5 }}
@@ -477,9 +478,11 @@ export default function Home() {
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Light easing
-            smoothTouch: false,
             infinite: false,
         });
+
+        // Make Lenis globally available
+        (window as any).lenis = lenis;
 
         function raf(time: number) {
             lenis.raf(time);
@@ -490,8 +493,36 @@ export default function Home() {
 
         return () => {
             lenis.destroy();
+            delete (window as any).lenis;
         };
     }, []);
+
+    // Framer Motion scroll animation for logo
+    const { scrollY } = useScroll();
+    const [isClient, setIsClient] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Ensure client-side rendering to avoid hydration mismatch
+    useEffect(() => {
+        setIsClient(true);
+        // Check if mobile device
+        setIsMobile(window.innerWidth < 768);
+
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    // Transform scroll progress to logo position and scale
+    const startY = isClient ? window.innerHeight / 2 - 96 : 366; // Use consistent fallback
+    const maxScale = isMobile ? 2 : 3; // 2x on mobile, 3x on desktop
+
+    // Safari-compatible transforms
+    const logoY = useTransform(scrollY, [0, 600], [startY, 14]);
+    const logoScale = useTransform(scrollY, [0, 600], [maxScale, 1]);
 
     useEffect(() => {
         async function loadImages() {
@@ -511,7 +542,7 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
-            <Header />
+            <Header logoY={logoY} logoScale={logoScale} />
 
             {/* Main Image Grid - Cyan background while loading, then images fade in */}
             <ImageGrid images={allImages} />

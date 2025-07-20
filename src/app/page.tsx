@@ -32,6 +32,7 @@ function VirtualizedImage({
 }: VirtualizedImageProps) {
     const [isVisible, setIsVisible] = useState(false);
     const [shouldLoad, setShouldLoad] = useState(false);
+    const [hasLoaded, setHasLoaded] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
 
@@ -81,19 +82,20 @@ function VirtualizedImage({
             }}
         >
             {shouldLoad && (
+                // Use regular img tag to bypass Vercel image optimization for CDN images
                 <img
                     ref={imageRef}
                     src={src}
                     alt={alt}
-                    width={width}
-                    height={height}
                     className={`w-full h-full object-cover object-center transition-opacity duration-300 ${
                         isVisible ? "opacity-100" : "opacity-0"
                     } ${className || ""}`}
                     onLoad={() => {
+                        setHasLoaded(true);
                         onLoad?.();
                     }}
                     loading="lazy"
+                    decoding="async"
                     style={{
                         width: "100%",
                         height: "100%",
@@ -133,40 +135,37 @@ async function fetchAllImages(): Promise<string[]> {
 
 // Header Component
 interface HeaderProps {
-    logoY: import("framer-motion").MotionValue<number>;
-    logoScale: import("framer-motion").MotionValue<number>;
+    logoY: any;
+    logoScale: any;
 }
 
 function Header({ logoY, logoScale }: HeaderProps) {
+    const [isMobile, setIsMobile] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Check for mobile screen size (720px breakpoint)
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 720);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
     const handleLogoClick = () => {
         const currentScrollY = window.scrollY;
 
         // Get the global Lenis instance
-        const lenis = (
-            window as typeof window & {
-                lenis?: {
-                    scrollTo: (
-                        target: number,
-                        options?: {
-                            duration?: number;
-                            easing?: (t: number) => number;
-                        }
-                    ) => void;
-                };
-            }
-        ).lenis;
+        const lenis = (window as any).lenis;
 
         if (currentScrollY <= 600) {
             // Scroll down past the quote section with Lenis for smooth animation
             if (lenis) {
                 lenis.scrollTo(700, {
-                    duration: 1.2,
-                    easing: (t: number) => {
-                        // Significant ease in and out (cubic-bezier-like curve)
-                        return t < 0.5
-                            ? 4 * t * t * t
-                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-                    },
+                    duration: 2,
+                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
                 });
             } else {
                 window.scrollTo({ top: 700, behavior: "smooth" });
@@ -175,13 +174,8 @@ function Header({ logoY, logoScale }: HeaderProps) {
             // Scroll to top with Lenis
             if (lenis) {
                 lenis.scrollTo(0, {
-                    duration: 1.0,
-                    easing: (t: number) => {
-                        // Significant ease in and out (cubic-bezier-like curve)
-                        return t < 0.5
-                            ? 4 * t * t * t
-                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-                    },
+                    duration: 1.5,
+                    easing: (t: number) => 1 - Math.pow(1 - t, 3),
                 });
             } else {
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -189,38 +183,150 @@ function Header({ logoY, logoScale }: HeaderProps) {
         }
     };
 
-    return (
-        <header
-            style={{ backgroundColor: CYAN_COLOR }}
-            className="h-[132px] flex items-center justify-between px-8 sticky top-0 z-50"
-        >
-            {/* Left side - Sign Up & Discord */}
-            <div className="flex items-center space-x-6">
-                <a
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                    className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Sign Up
-                </a>
-                <a
-                    href="https://discord.com/invite/32BsffvEf4"
-                    className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Discord
-                </a>
-            </div>
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-            {/* Center - Logo (clickable to scroll to top) */}
+    // Hamburger Icon Component
+    const HamburgerIcon = () => (
+        <button
+            onClick={toggleMenu}
+            className="flex flex-col justify-center items-center w-12 h-12 space-y-2 focus:outline-none"
+            aria-label="Toggle menu"
+        >
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    rotate: isMenuOpen ? 45 : 0,
+                    y: isMenuOpen ? 12 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    opacity: isMenuOpen ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    rotate: isMenuOpen ? -45 : 0,
+                    y: isMenuOpen ? -12 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+        </button>
+    );
+
+    return (
+        <>
+            <header
+                style={{ backgroundColor: CYAN_COLOR }}
+                className={`sticky top-0 z-50 ${
+                    isMobile
+                        ? "flex flex-col"
+                        : "h-[132px] flex items-center justify-between px-8"
+                }`}
+            >
+                {isMobile ? (
+                    <>
+                        {/* Mobile Header - Top Row */}
+                        <div className="flex items-center justify-between w-full h-[132px] px-6">
+                            <HamburgerIcon />
+                            {/* Empty div for spacing - logo is positioned absolutely */}
+                            <div></div>
+                        </div>
+
+                        {/* Mobile Menu - Expanded */}
+                        <motion.div
+                            initial={false}
+                            animate={{
+                                height: isMenuOpen ? 240 : 0,
+                                opacity: isMenuOpen ? 1 : 0,
+                            }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden w-full"
+                            style={{ backgroundColor: CYAN_COLOR }}
+                        >
+                            {isMenuOpen && (
+                                <div className="py-4 px-4 flex flex-col space-y-3">
+                                    <a
+                                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Sign Up
+                                    </a>
+                                    <a
+                                        href="https://discord.com/invite/32BsffvEf4"
+                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Discord
+                                    </a>
+                                    <a
+                                        href="https://app.hack.sv/"
+                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Dashboard
+                                    </a>
+                                </div>
+                            )}
+                        </motion.div>
+                    </>
+                ) : (
+                    <>
+                        {/* Desktop Layout - Left side */}
+                        <div className="flex items-center space-x-6">
+                            <a
+                                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Sign Up
+                            </a>
+                            <a
+                                href="https://discord.com/invite/32BsffvEf4"
+                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Discord
+                            </a>
+                        </div>
+
+                        {/* Desktop Layout - Right side */}
+                        <div>
+                            <a
+                                href="https://app.hack.sv/"
+                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Dashboard
+                            </a>
+                        </div>
+                    </>
+                )}
+            </header>
+
+            {/* Logo - Always centered and animated */}
             <motion.div
                 className="fixed left-1/2 top-0 z-[100]"
                 style={{
                     x: "-50%",
-                    y: logoY,
-                    scale: logoScale,
+                    y: isMobile && isMenuOpen ? 14 : logoY,
+                    scale: isMobile && isMenuOpen ? 1 : logoScale,
                     transformOrigin: "center center",
                 }}
             >
@@ -238,19 +344,7 @@ function Header({ logoY, logoScale }: HeaderProps) {
                     />
                 </button>
             </motion.div>
-
-            {/* Right side - Dashboard */}
-            <div>
-                <a
-                    href="https://app.hack.sv/"
-                    className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Dashboard
-                </a>
-            </div>
-        </header>
+        </>
     );
 }
 // Image Grid Component - This represents the main visual area from the Figma
@@ -480,7 +574,7 @@ function QuotesCarousel() {
                             style={{ width: `${width}px` }}
                         >
                             <span className="text-white text-lg font-bold whitespace-nowrap">
-                                &ldquo;{quote}&rdquo;
+                                "{quote}"
                             </span>
                         </div>
                     );
@@ -502,7 +596,7 @@ export default function Home() {
         });
 
         // Make Lenis globally available
-        (window as typeof window & { lenis?: typeof lenis }).lenis = lenis;
+        (window as any).lenis = lenis;
 
         function raf(time: number) {
             lenis.raf(time);
@@ -513,7 +607,7 @@ export default function Home() {
 
         return () => {
             lenis.destroy();
-            delete (window as typeof window & { lenis?: typeof lenis }).lenis;
+            delete (window as any).lenis;
         };
     }, []);
 
@@ -525,11 +619,11 @@ export default function Home() {
     // Ensure client-side rendering to avoid hydration mismatch
     useEffect(() => {
         setIsClient(true);
-        // Check if mobile device
-        setIsMobile(window.innerWidth < 768);
+        // Check if mobile device (720px breakpoint)
+        setIsMobile(window.innerWidth < 720);
 
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
+            setIsMobile(window.innerWidth < 720);
         };
 
         window.addEventListener("resize", handleResize);

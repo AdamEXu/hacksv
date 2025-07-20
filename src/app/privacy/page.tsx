@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function PrivacyPage() {
     return (
         <div className="min-h-screen" style={{ backgroundColor: "#00CCFF" }}>
@@ -17,7 +15,7 @@ export default function PrivacyPage() {
                         hack.sv
                     </h1>
                     <div className="text-center">
-                        <Link
+                        <a
                             href="/"
                             className="text-black hover:underline"
                             style={{
@@ -26,7 +24,7 @@ export default function PrivacyPage() {
                             }}
                         >
                             ← Back to Countdown
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -96,13 +94,12 @@ export default function PrivacyPage() {
                             fontSize: "16px",
                         }}
                     >
-                        hack.sv (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or
-                        &ldquo;us&rdquo;) is a nonprofit organization dedicated
-                        to running educational hackathons and programs for
-                        students under 18. We respect your privacy and give you
-                        control over your personal information. This Privacy
-                        Policy applies to all hack.sv services and platforms,
-                        including:
+                        hack.sv ("we," "our," or "us") is a nonprofit
+                        organization dedicated to running educational hackathons
+                        and programs for students under 18. We respect your
+                        privacy and give you control over your personal
+                        information. This Privacy Policy applies to all hack.sv
+                        services and platforms, including:
                     </p>
 
                     <ul

@@ -7,6 +7,7 @@ import { Header } from "./components/Header";
 import { ImageGrid } from "./components/ImageGrid";
 import { QuotesCarousel } from "./components/QuotesCarousel";
 import { fetchAllImages } from "./api/imageApi";
+import { SignUpForm } from "./components/SignUpForm";
 
 export default function Home() {
     const [allImages, setAllImages] = useState<string[]>([]);
@@ -75,6 +76,27 @@ export default function Home() {
         }
 
         loadImages();
+    }, []);
+
+    // Handle hash navigation to sign-up form
+    useEffect(() => {
+        if (window.location.hash === "#sign-up") {
+            // Wait a bit for the page to fully load and Lenis to initialize
+            setTimeout(() => {
+                const signUpElement = document.getElementById("sign-up");
+                if (signUpElement) {
+                    const lenis = (window as any).lenis;
+                    if (lenis) {
+                        lenis.scrollTo(signUpElement, {
+                            duration: 1.5,
+                            easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                        });
+                    } else {
+                        signUpElement.scrollIntoView({ behavior: "smooth" });
+                    }
+                }
+            }, 500); // 500ms delay to ensure everything is loaded
+        }
     }, []);
 
     return (
@@ -185,6 +207,7 @@ export default function Home() {
                 </p>
                 <div className="h-32"></div> {/* Extra space at bottom */}
             </div>
+            <SignUpForm />
         </div>
     );
 }

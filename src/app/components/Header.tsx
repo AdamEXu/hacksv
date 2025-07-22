@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { HeaderProps } from "../types";
 import { CYAN_COLOR } from "../constants";
 
@@ -10,6 +11,7 @@ import { CYAN_COLOR } from "../constants";
 export function Header({ logoY, logoScale }: HeaderProps) {
     const [isMobile, setIsMobile] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     // Check for mobile screen size (720px breakpoint)
     useEffect(() => {
@@ -23,6 +25,13 @@ export function Header({ logoY, logoScale }: HeaderProps) {
     }, []);
 
     const handleLogoClick = () => {
+        if (pathname !== "/") {
+            // If not on home page, navigate to home page
+            window.location.href = "/";
+            return;
+        }
+
+        // If on home page, handle scroll behavior
         const currentScrollY = window.scrollY;
 
         // Get the global Lenis instance
@@ -53,6 +62,30 @@ export function Header({ logoY, logoScale }: HeaderProps) {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleSignUpClick = () => {
+        if (pathname === "/") {
+            // If on home page, smooth scroll to sign-up form
+            const signUpElement = document.getElementById("sign-up");
+            if (signUpElement) {
+                const lenis = (window as any).lenis;
+                if (lenis) {
+                    lenis.scrollTo(signUpElement, {
+                        duration: 1.5,
+                        easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                    });
+                } else {
+                    signUpElement.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        } else {
+            // If on other pages, redirect to home page with hash
+            window.location.href = "/#sign-up";
+        }
+
+        // Close mobile menu if open
+        setIsMenuOpen(false);
     };
 
     // Hamburger Icon Component
@@ -120,15 +153,12 @@ export function Header({ logoY, logoScale }: HeaderProps) {
                         >
                             {isMenuOpen && (
                                 <div className="py-4 px-4 flex flex-col space-y-3">
-                                    <a
-                                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                                    <button
+                                        onClick={handleSignUpClick}
                                         className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        onClick={() => setIsMenuOpen(false)}
                                     >
                                         Sign Up
-                                    </a>
+                                    </button>
                                     <a
                                         href="https://discord.com/invite/32BsffvEf4"
                                         className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
@@ -155,14 +185,12 @@ export function Header({ logoY, logoScale }: HeaderProps) {
                     <>
                         {/* Desktop Layout - Left side */}
                         <div className="flex items-center space-x-6">
-                            <a
-                                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                            <button
+                                onClick={handleSignUpClick}
                                 className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
-                                target="_blank"
-                                rel="noopener noreferrer"
                             >
                                 Sign Up
-                            </a>
+                            </button>
                             <a
                                 href="https://discord.com/invite/32BsffvEf4"
                                 className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"

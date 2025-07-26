@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         title: "hack.sv",
         description:
             "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
-        images: ["/hack.sv_discord.jpg"],
+        images: ["/hack.sv_discord.png"],
     },
     metadataBase: new URL("https://hack.sv"),
 };

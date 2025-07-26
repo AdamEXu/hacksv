@@ -16,7 +16,33 @@ const vt323 = VT323({
 
 export const metadata: Metadata = {
     title: "hack.sv",
-    description: "👀",
+    description:
+        "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
+    openGraph: {
+        title: "hack.sv",
+        description:
+            "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
+        url: "https://hack.sv",
+        siteName: "hack.sv",
+        images: [
+            {
+                url: "/hack.sv_big.png",
+                width: 1820,
+                height: 1176,
+                alt: "hack.sv logo",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "hack.sv",
+        description:
+            "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
+        images: ["/hack.sv_big.png"],
+    },
+    metadataBase: new URL("https://hack.sv"),
 };
 
 export default function RootLayout({
@@ -28,6 +54,7 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <meta name="apple-mobile-web-app-title" content="hack.sv" />
+                <meta name="theme-color" content="#00CCFF" />
             </head>
             <body
                 className={`${barlowCondensed.variable} ${vt323.variable} antialiased`}

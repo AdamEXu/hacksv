@@ -26,9 +26,9 @@ export const metadata: Metadata = {
         siteName: "hack.sv",
         images: [
             {
-                url: "/hack.sv_big.png",
-                width: 1820,
-                height: 1176,
+                url: "/hack.sv_discord.png",
+                width: 1200,
+                height: 630,
                 alt: "hack.sv logo",
             },
         ],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         title: "hack.sv",
         description:
             "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
-        images: ["/hack.sv_big.png"],
+        images: ["/hack.sv_discord.jpg"],
     },
     metadataBase: new URL("https://hack.sv"),
 };
@@ -55,6 +55,9 @@ export default function RootLayout({
             <head>
                 <meta name="apple-mobile-web-app-title" content="hack.sv" />
                 <meta name="theme-color" content="#00CCFF" />
+                <meta property="og:image:type" content="image/jpeg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
             </head>
             <body
                 className={`${barlowCondensed.variable} ${vt323.variable} antialiased`}

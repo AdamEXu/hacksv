@@ -16,14 +16,16 @@ export function SignUpForm() {
         >
             <div className="max-w-4xl mx-auto px-6 py-12">
                 <h2
-                    className="text-center text-black mb-4"
+                    className="text-center text-white mb-4"
                     style={{
                         fontFamily: "VT323, monospace",
                         fontSize: "48px",
                         lineHeight: "1.2",
                     }}
                 >
-                    Sign Up
+                    <a href="https://signup.hack.sv" target="_blank">
+                    Sign up
+                    </a>
                 </h2>
             </div>
         </div>

@@ -113,97 +113,37 @@ export default function Home() {
             {/* Lorem Ipsum Content for Testing Scroll */}
             <div className="max-w-4xl mx-auto px-8 py-16 space-y-8">
                 <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                    About hack.sv
+                    What is hack.sv
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
+                The theme of hack.sv is to build real-world AI applications on hardware devices, using only local inference and no reliance on cloud services. Attendees will need to optimize their projects to run completely offline on limited hardware, mimicking real-world constraints. We are the first real AI inference hackathon for high schoolers.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum. Sed
-                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque
-                    ipsa quae ab illo inventore veritatis et quasi architecto
-                    beatae vitae dicta sunt explicabo.
+                We aim to teach real world skills that are important in the AI era, empowering attendees to build something they're truly proud of and would share with their friends and family.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Our Mission
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut fugit, sed quia consequuntur magni dolores eos qui
-                    ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                    qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                    velit, sed quia non numquam eius modi tempora incidunt ut
-                    labore et dolore magnam aliquam quaerat voluptatem.
+                Our mission is to allow attendees to walk out of hack.sv knowing they've built something meaningful, not just another fragile ChatGPT wrapper with a fancy UI.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Ut enim ad minima veniam, quis nostrum exercitationem ullam
-                    corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-                    consequatur? Quis autem vel eum iure reprehenderit qui in ea
-                    voluptate velit esse quam nihil molestiae consequatur, vel
-                    illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                At many hackathons, recorded demos, mock ups, and slideshows overshadow technical achievement. At hack.sv, we would like to reward innovative concepts that actually work.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
-                    Community
+                    Previous Events
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa
-                    qui officia deserunt mollitia animi, id est laborum et
-                    dolorum fuga.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                    Et harum quidem rerum facilis est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi optio
-                    cumque nihil impedit quo minus id quod maxime placeat facere
-                    possimus, omnis voluptas assumenda est, omnis dolor
-                    repellendus.
-                </p>
-                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
-                    Events
-                </h3>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                    Temporibus autem quibusdam et aut officiis debitis aut rerum
-                    necessitatibus saepe eveniet ut et voluptates repudiandae
-                    sint et molestiae non recusandae. Itaque earum rerum hic
-                    tenetur a sapiente delectus, ut aut reiciendis voluptatibus
-                    maiores alias consequatur aut perferendis doloribus
-                    asperiores repellat.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
+                    We've run multiple hackathons in the past, including a game jam called Counterspell and another hardware hackathon called Scrapyard.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Get Involved
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum. Sed
-                    ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque laudantium, totam rem aperiam, eaque
-                    ipsa quae ab illo inventore veritatis et quasi architecto
-                    beatae vitae dicta sunt explicabo.
+                    We are not accepting new organizers for hack.sv at the moment, but we welcome and appreciate day-of volenteers and parents who are interested in helping out.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                    odit aut fugit, sed quia consequuntur magni dolores eos qui
-                    ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                    qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                    velit, sed quia non numquam eius modi tempora incidunt ut
-                    labore et dolore magnam aliquam quaerat voluptatem.
+                    
                 </p>
                 <div className="h-32"></div> {/* Extra space at bottom */}
             </div>

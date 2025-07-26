@@ -65,24 +65,25 @@ export function Header({ logoY, logoScale }: HeaderProps) {
     };
 
     const handleSignUpClick = () => {
-        if (pathname === "/") {
-            // If on home page, smooth scroll to sign-up form
-            const signUpElement = document.getElementById("sign-up");
-            if (signUpElement) {
-                const lenis = (window as any).lenis;
-                if (lenis) {
-                    lenis.scrollTo(signUpElement, {
-                        duration: 1.5,
-                        easing: (t: number) => 1 - Math.pow(1 - t, 3),
-                    });
-                } else {
-                    signUpElement.scrollIntoView({ behavior: "smooth" });
-                }
-            }
-        } else {
-            // If on other pages, redirect to home page with hash
-            window.location.href = "/#sign-up";
-        }
+        // if (pathname === "/") {
+        //     // If on home page, smooth scroll to sign-up form
+        //     const signUpElement = document.getElementById("sign-up");
+        //     if (signUpElement) {
+        //         const lenis = (window as any).lenis;
+        //         if (lenis) {
+        //             lenis.scrollTo(signUpElement, {
+        //                 duration: 1.5,
+        //                 easing: (t: number) => 1 - Math.pow(1 - t, 3),
+        //             });
+        //         } else {
+        //             signUpElement.scrollIntoView({ behavior: "smooth" });
+        //         }
+        //     }
+        // } else {
+        //     // If on other pages, redirect to home page with hash
+        //     window.location.href = "/#sign-up";
+        // }
+        window.open("https://signup.hack.sv", "_blank");
 
         // Close mobile menu if open
         setIsMenuOpen(false);
@@ -124,7 +125,11 @@ export function Header({ logoY, logoScale }: HeaderProps) {
     return (
         <>
             <header
-                style={{ backgroundColor: CYAN_COLOR }}
+                style={{
+                    backgroundColor: CYAN_COLOR,
+                    fontFamily: "VT323, monospace",
+                    fontSize: "24px"
+                }}
                 className={`sticky top-0 z-50 ${
                     isMobile
                         ? "flex flex-col"

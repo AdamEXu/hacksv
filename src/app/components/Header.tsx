@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,21 +8,9 @@ import { HeaderProps } from "../types";
 import { CYAN_COLOR } from "../constants";
 
 // Header Component
-export function Header({ logoY, logoScale }: HeaderProps) {
-    const [isMobile, setIsMobile] = useState(false);
+export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathname = usePathname();
-
-    // Check for mobile screen size (720px breakpoint)
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 720);
-        };
-
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
 
     const handleLogoClick = () => {
         if (pathname !== "/") {
@@ -65,27 +53,24 @@ export function Header({ logoY, logoScale }: HeaderProps) {
     };
 
     const handleSignUpClick = () => {
-        // if (pathname === "/") {
-        //     // If on home page, smooth scroll to sign-up form
-        //     const signUpElement = document.getElementById("sign-up");
-        //     if (signUpElement) {
-        //         const lenis = (window as any).lenis;
-        //         if (lenis) {
-        //             lenis.scrollTo(signUpElement, {
-        //                 duration: 1.5,
-        //                 easing: (t: number) => 1 - Math.pow(1 - t, 3),
-        //             });
-        //         } else {
-        //             signUpElement.scrollIntoView({ behavior: "smooth" });
-        //         }
-        //     }
-        // } else {
-        //     // If on other pages, redirect to home page with hash
-        //     window.location.href = "/#sign-up";
-        // }
-        window.open("https://signup.hack.sv", "_blank");
+        if (pathname === "/") {
+            // If on home page, smooth scroll to sign-up form
+            const signUpElement = document.getElementById("sign-up");
+            if (signUpElement) {
+                const lenis = (window as any).lenis;
+                if (lenis) {
+                    lenis.scrollTo(signUpElement, {
+                        duration: 1.5,
+                        easing: (t: number) => 1 - Math.pow(1 - t, 3),
+                    });
+                } else {
+                    signUpElement.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        } else {
+            window.location.href = "/#sign-up";
+        }
 
-        // Close mobile menu if open
         setIsMenuOpen(false);
     };
 
@@ -125,11 +110,7 @@ export function Header({ logoY, logoScale }: HeaderProps) {
     return (
         <>
             <header
-                style={{
-                    backgroundColor: CYAN_COLOR,
-                    fontFamily: "VT323, monospace",
-                    fontSize: "24px"
-                }}
+                style={{ backgroundColor: CYAN_COLOR }}
                 className={`sticky top-0 z-50 ${
                     isMobile
                         ? "flex flex-col"
@@ -230,6 +211,9 @@ export function Header({ logoY, logoScale }: HeaderProps) {
                     scale: isMobile && isMenuOpen ? 1 : logoScale,
                     transformOrigin: "center center",
                 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: logoReady ? 1 : 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
             >
                 <button
                     onClick={handleLogoClick}
@@ -242,6 +226,7 @@ export function Header({ logoY, logoScale }: HeaderProps) {
                         width={455}
                         height={294}
                         className="w-[160px] h-[103px] object-contain"
+                        priority
                     />
                 </button>
             </motion.div>

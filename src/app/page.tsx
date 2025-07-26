@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import Lenis from "lenis";
 import { Header } from "./components/Header";
@@ -8,6 +8,7 @@ import { ImageGrid } from "./components/ImageGrid";
 import { QuotesCarousel } from "./components/QuotesCarousel";
 import { fetchAllImages } from "./api/imageApi";
 import { SignUpForm } from "./components/SignUpForm";
+import { Footer } from "./components/Footer";
 
 export default function Home() {
     const [allImages, setAllImages] = useState<string[]>([]);
@@ -38,26 +39,55 @@ export default function Home() {
 
     // Framer Motion scroll animation for logo
     const { scrollY } = useScroll();
-    const [isClient, setIsClient] = useState(false);
+    const [logoReady, setLogoReady] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [startY, setStartY] = useState(366); // Default fallback
+    const [maxScale, setMaxScale] = useState(3); // Default fallback
 
-    // Ensure client-side rendering to avoid hydration mismatch
-    useEffect(() => {
-        setIsClient(true);
-        // Check if mobile device (720px breakpoint)
-        setIsMobile(window.innerWidth < 720);
+    // Use layoutEffect for synchronous DOM measurements to prevent flash
+    useLayoutEffect(() => {
+        // Calculate initial position immediately
+        const viewportHeight = window.innerHeight;
+        const calculatedStartY = viewportHeight / 2 - 96;
+        const isMobileDevice = window.innerWidth < 720;
+
+        // Set CSS custom properties for immediate positioning
+        document.documentElement.style.setProperty(
+            "--logo-start-y",
+            `${calculatedStartY}px`
+        );
+        document.documentElement.style.setProperty(
+            "--logo-max-scale",
+            isMobileDevice ? "2" : "3"
+        );
+
+        setStartY(calculatedStartY);
+        setIsMobile(isMobileDevice);
+        setMaxScale(isMobileDevice ? 2 : 3);
+        setLogoReady(true);
 
         const handleResize = () => {
-            setIsMobile(window.innerWidth < 720);
+            const newIsMobile = window.innerWidth < 720;
+            const newStartY = window.innerHeight / 2 - 96;
+
+            // Update CSS custom properties
+            document.documentElement.style.setProperty(
+                "--logo-start-y",
+                `${newStartY}px`
+            );
+            document.documentElement.style.setProperty(
+                "--logo-max-scale",
+                newIsMobile ? "2" : "3"
+            );
+
+            setIsMobile(newIsMobile);
+            setMaxScale(newIsMobile ? 2 : 3);
+            setStartY(newStartY);
         };
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-
-    // Transform scroll progress to logo position and scale
-    const startY = isClient ? window.innerHeight / 2 - 96 : 366; // Use consistent fallback
-    const maxScale = isMobile ? 2 : 3; // 2x on mobile, 3x on desktop
 
     // Safari-compatible transforms
     const logoY = useTransform(scrollY, [0, 600], [startY, 14]);
@@ -102,7 +132,12 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
-            <Header logoY={logoY} logoScale={logoScale} />
+            <Header
+                logoY={logoY}
+                logoScale={logoScale}
+                logoReady={logoReady}
+                isMobile={isMobile}
+            />
 
             {/* Main Image Grid - Cyan background while loading, then images fade in */}
             <ImageGrid images={allImages} />
@@ -116,38 +151,54 @@ export default function Home() {
                     What is hack.sv
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                The theme of hack.sv is to build real-world AI applications on hardware devices, using only local inference and no reliance on cloud services. Attendees will need to optimize their projects to run completely offline on limited hardware, mimicking real-world constraints. We are the first real AI inference hackathon for high schoolers.
+                    The theme of hack.sv is to build real-world AI applications
+                    on hardware devices, using only local inference and no
+                    reliance on cloud services. Attendees will need to optimize
+                    their projects to run completely offline on limited
+                    hardware, mimicking real-world constraints. We are the first
+                    real AI inference hackathon for high schoolers.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                We aim to teach real world skills that are important in the AI era, empowering attendees to build something they're truly proud of and would share with their friends and family.
+                    We aim to teach real world skills that are important in the
+                    AI era, empowering attendees to build something they're
+                    truly proud of and would share with their friends and
+                    family.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Our Mission
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                Our mission is to allow attendees to walk out of hack.sv knowing they've built something meaningful, not just another fragile ChatGPT wrapper with a fancy UI.
+                    Our mission is to allow attendees to walk out of hack.sv
+                    knowing they've built something meaningful, not just another
+                    fragile ChatGPT wrapper with a fancy UI.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                At many hackathons, recorded demos, mock ups, and slideshows overshadow technical achievement. At hack.sv, we would like to reward innovative concepts that actually work.
+                    At many hackathons, recorded demos, mock ups, and slideshows
+                    overshadow technical achievement. At hack.sv, we would like
+                    to reward innovative concepts that actually work.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Previous Events
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    We've run multiple hackathons in the past, including a game jam called Counterspell and another hardware hackathon called Scrapyard.
+                    We've run multiple hackathons in the past, including a game
+                    jam called Counterspell and another hardware hackathon
+                    called Scrapyard.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
-                    Get Involved
+                    Sign Up Now!
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    We are not accepting new organizers for hack.sv at the moment, but we welcome and appreciate day-of volenteers and parents who are interested in helping out.
+                    We haven't opened sign ups quite yet. But fill out our
+                    interest form to be the first to know when sign ups do open
+                    and more information about hack.sv is available. You can
+                    also join our Discord server to stay up to date.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                    
-                </p>
-                <div className="h-32"></div> {/* Extra space at bottom */}
+                {/* <p className="text-lg text-gray-700 leading-relaxed"></p> */}
+                {/* <div className="h-32"></div> Extra space at bottom */}
             </div>
             <SignUpForm />
+            <Footer />
         </div>
     );
 }

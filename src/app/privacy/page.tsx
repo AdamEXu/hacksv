@@ -38,14 +38,19 @@ export default function PrivacyPage() {
     return (
         <div className="min-h-screen bg-white">
             {/* Header with fixed logo position */}
-            <Header logoY={logoY} logoScale={logoScale} />
+            <Header
+                logoY={logoY}
+                logoScale={logoScale}
+                logoReady={true}
+                isMobile={false}
+            />
 
             {/* Main Content - Styled like main page */}
             <div className="w-full" style={{ backgroundColor: CYAN_COLOR }}>
                 <div className="max-w-4xl mx-auto px-6 py-12">
                     {/* Privacy Policy Content */}
                     <h1
-                        className="text-center text-black mb-12"
+                        className="text-center text-white mb-12"
                         style={{
                             fontFamily: "VT323, monospace",
                             fontSize: "48px",

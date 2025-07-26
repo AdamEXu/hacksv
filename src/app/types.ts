@@ -12,6 +12,8 @@ export interface VirtualizedImageProps {
 export interface HeaderProps {
     logoY: any;
     logoScale: any;
+    logoReady: boolean;
+    isMobile: boolean;
 }
 
 // Image Grid Component Props

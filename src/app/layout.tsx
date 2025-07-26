@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         siteName: "hack.sv",
         images: [
             {
-                url: "/hack.sv_discord.jpg",
+                url: "https://hack.sv/hack.sv_discord.jpg",
                 width: 1200,
                 height: 630,
                 alt: "hack.sv logo",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
         title: "hack.sv",
         description:
             "hack.sv is a hackathon in Silicon Valley happening soon! More information coming soon.",
-        images: ["/hack.sv_discord.jpg"],
+        images: ["https://hack.sv/hack.sv_discord.jpg"],
     },
     metadataBase: new URL("https://hack.sv"),
 };

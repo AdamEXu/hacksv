@@ -20,8 +20,8 @@ export function Footer() {
                     © 2025 hack.sv
                 </p>
 
-                {/* Privacy Policy Link */}
-                <div className="mb-6">
+                {/* Privacy Policy and Code of Conduct Links */}
+                <div className="mb-6 flex justify-center items-center space-x-4">
                     <a
                         href="/privacy"
                         className="text-white hover:underline transition-all duration-200"
@@ -32,6 +32,27 @@ export function Footer() {
                         }}
                     >
                         Privacy Policy
+                    </a>
+                    <span 
+                        className="text-white"
+                        style={{
+                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontSize: "16px",
+                            fontWeight: "500",
+                        }}
+                    >
+                        •
+                    </span>
+                    <a
+                        href="/conduct"
+                        className="text-white hover:underline transition-all duration-200"
+                        style={{
+                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontSize: "16px",
+                            fontWeight: "500",
+                        }}
+                    >
+                        Code of Conduct
                     </a>
                 </div>
 

@@ -57,36 +57,48 @@ export default function PrivacyPage() {
                             lineHeight: "1.2",
                         }}
                     >
-                        Privacy Policy
+                        Privacy Policy — hack.sv
                     </h1>
 
+                    {/* Effective Date */}
+                    <div className="text-center mb-8">
+                        <p
+                            className="text-white mb-2"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "18px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            <span className="font-medium">Effective Date:</span>{" "}
+                            July 17, 2025
+                        </p>
+                        <p
+                            className="text-white"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "18px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            <span className="font-medium">Last Updated:</span>{" "}
+                            July 17, 2025
+                        </p>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="border-t-2 border-white mb-12"></div>
+
+                    {/* Overview Section */}
                     <div
                         className="bg-white rounded-lg p-8 mb-8"
                         style={{ border: "4px solid black" }}
                     >
-                        <p
-                            className="text-gray-800 leading-relaxed mb-4"
-                            style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "16px",
-                            }}
-                        >
-                            <strong className="font-semibold text-black">
-                                Effective Date:
-                            </strong>{" "}
-                            July 17, 2025{" "}
-                            <strong className="font-semibold text-black">
-                                Last Updated:
-                            </strong>{" "}
-                            July 17, 2025
-                        </p>
-
-                        {/* Overview Section */}
                         <h2
-                            className="text-black mt-12 mb-6"
+                            className="text-black mb-6"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "28px",
+                                fontSize: "32px",
                                 fontWeight: "600",
                             }}
                         >
@@ -94,7 +106,7 @@ export default function PrivacyPage() {
                         </h2>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-4 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -109,44 +121,35 @@ export default function PrivacyPage() {
                         </p>
 
                         <ul
-                            className="list-disc list-inside text-gray-800 mb-4 space-y-2 ml-4"
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
                             }}
                         >
-                            <li className="ml-2">
+                            <li>
                                 Our website (
                                 <a
                                     href="https://hack.sv"
-                                    className="text-black hover:opacity-70 underline font-semibold"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        fontFamily:
-                                            "Barlow Condensed, sans-serif",
-                                        textDecorationColor: "#00CCFF",
-                                    }}
+                                    className="text-blue-600 hover:underline"
                                 >
                                     https://hack.sv
                                 </a>
                                 ) and all its subdomains (e.g.,
                                 dashboard.hack.sv, id.hack.sv)
                             </li>
-                            <li className="ml-2">
-                                Event registration and participation
-                            </li>
-                            <li className="ml-2">
+                            <li>Event registration and participation</li>
+                            <li>
                                 Communications (emails, newsletters,
                                 announcements)
                             </li>
-                            <li className="ml-2">
+                            <li>
                                 Social and community platforms (e.g., Discord)
                             </li>
                         </ul>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-4 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -159,7 +162,7 @@ export default function PrivacyPage() {
                         </p>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -169,13 +172,18 @@ export default function PrivacyPage() {
                             participating in our programs, you agree to the
                             terms of this Privacy Policy.
                         </p>
+                    </div>
 
-                        {/* Data Controller Section */}
+                    {/* Data Controller Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
                         <h2
-                            className="text-black mt-12 mb-6"
+                            className="text-black mb-6"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "28px",
+                                fontSize: "32px",
                                 fontWeight: "600",
                             }}
                         >
@@ -183,76 +191,81 @@ export default function PrivacyPage() {
                         </h2>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-4 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
                             }}
                         >
-                            <strong className="font-semibold text-black">
+                            <span className="font-medium text-black">
                                 hack.sv
-                            </strong>{" "}
-                            is fiscally sponsored by{" "}
-                            <strong className="font-semibold text-black">
-                                The Hack Foundation (d.b.a. Hack Club)
-                            </strong>
-                            , a 501(c)(3) nonprofit organization (EIN:
-                            81-2908499).
+                            </span>{" "}
+                            is a California nonprofit organization (EIN:
+                            [pending]).
                         </p>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-2 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
                             }}
                         >
-                            <strong className="font-semibold text-black">
+                            <span className="font-medium text-black">
                                 Contact:
-                            </strong>{" "}
-                            contact@hack.sv{" "}
-                            <strong className="font-semibold text-black">
+                            </span>{" "}
+                            contact@hack.sv
+                        </p>
+
+                        <p
+                            className="text-gray-800 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <span className="font-medium text-black">
                                 Website:
-                            </strong>{" "}
+                            </span>{" "}
                             <a
                                 href="https://hack.sv"
-                                className="text-black hover:opacity-70 underline font-semibold"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{
-                                    fontFamily: "Barlow Condensed, sans-serif",
-                                    textDecorationColor: "#00CCFF",
-                                }}
+                                className="text-blue-600 hover:underline"
                             >
                                 https://hack.sv
                             </a>
                         </p>
+                    </div>
 
-                        {/* Information We Collect Section */}
+                    {/* Information We Collect Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
                         <h2
-                            className="text-black mt-12 mb-6"
+                            className="text-black mb-6"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "28px",
+                                fontSize: "32px",
                                 fontWeight: "600",
                             }}
                         >
                             Information We Collect
                         </h2>
 
+                        {/* 1. Website Visitors */}
                         <h3
-                            className="text-black mt-8 mb-4"
+                            className="text-black mb-4"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "22px",
-                                fontWeight: "600",
+                                fontSize: "24px",
+                                fontWeight: "500",
                             }}
                         >
                             1. Website Visitors
                         </h3>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-4 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -262,24 +275,22 @@ export default function PrivacyPage() {
                         </p>
 
                         <ul
-                            className="list-disc list-inside text-gray-800 mb-4 space-y-2 ml-4"
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
                             }}
                         >
-                            <li className="ml-2">IP address</li>
-                            <li className="ml-2">
-                                Browser & device information
-                            </li>
-                            <li className="ml-2">
+                            <li>IP address</li>
+                            <li>Browser & device information</li>
+                            <li>
                                 Pages visited & actions taken (for security &
                                 performance)
                             </li>
                         </ul>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-8 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -291,20 +302,473 @@ export default function PrivacyPage() {
                             data when you interact with them.
                         </p>
 
-                        {/* Contact Section */}
-                        <h2
-                            className="text-black mt-12 mb-6"
+                        {/* 2. Account & Event Registration */}
+                        <h3
+                            className="text-black mb-4"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "28px",
-                                fontWeight: "600",
+                                fontSize: "24px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            2. Account & Event Registration
+                        </h3>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            When you create an account or register for an event,
+                            we collect:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>Legal name (required)</li>
+                            <li>
+                                Preferred name (required; you may use your first
+                                name)
+                            </li>
+                            <li>
+                                Pronouns (required; used only internally and on
+                                badges/dashboards, not shared outside hack.sv)
+                            </li>
+                            <li>Date of birth (to verify you're under 18)</li>
+                            <li>Email address</li>
+                            <li>Discord ID & username (if linked)</li>
+                            <li>
+                                Phone number, emergency contact, dietary
+                                restrictions, T-shirt size, and physical address
+                                (for event logistics —{" "}
+                                <span className="font-medium text-black">
+                                    deleted no sooner than two weeks after the
+                                    event concludes, or longer if required for
+                                    shipping purposes
+                                </span>
+                                )
+                            </li>
+                        </ul>
+
+                        {/* Authentication Methods */}
+                        <h4
+                            className="text-black mb-4 mt-6"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "20px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            Authentication Methods
+                        </h4>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            We offer two login options:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-8 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>
+                                <span className="font-medium text-black">
+                                    Google OAuth:
+                                </span>{" "}
+                                If you choose this option, we collect your email
+                                & name from Google.
+                            </li>
+                            <li>
+                                <span className="font-medium text-black">
+                                    Email Verification:
+                                </span>{" "}
+                                If you choose this option, we send a
+                                verification code to your email, and Google is
+                                not involved at all.
+                            </li>
+                        </ul>
+
+                        {/* 3. Communications */}
+                        <h3
+                            className="text-black mb-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "24px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            3. Communications
+                        </h3>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            When you communicate with us or subscribe to
+                            updates:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>Name & email address</li>
+                            <li>Content of your inquiry or feedback</li>
+                        </ul>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            You are automatically subscribed to email updates
+                            when you create an account.
+                            <br />
+                            You{" "}
+                            <span className="font-medium text-black">
+                                cannot opt out
+                            </span>{" "}
+                            of essential operational announcements (like venue
+                            changes, meal sign-ups, or volunteer notices).
+                            <br />
+                            You{" "}
+                            <span className="font-medium text-black">
+                                can opt out
+                            </span>{" "}
+                            of promotional emails (such as sponsor offers or
+                            referral programs) at any time via:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-8 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>Your ID dashboard</li>
+                            <li>The unsubscribe link in any email</li>
+                        </ul>
+
+                        {/* 4. Photos & Videos */}
+                        <h3
+                            className="text-black mb-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "24px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            4. Photos & Videos
+                        </h3>
+
+                        <p
+                            className="text-gray-800 mb-8 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            We may photograph and record our events.
+                            <br />
+                            By attending an event, you consent to the use of
+                            your likeness in photos, videos, or recordings for{" "}
+                            <span className="font-medium text-black">
+                                perpetual promotional purposes
+                            </span>
+                            , including but not limited to our website, social
+                            media, slides, emails, flyers, and advertisements.
+                            <br />
+                            This applies to both participants and
+                            volunteers/staff.
+                            <br />
+                            Detailed terms may also appear in the event-specific
+                            waiver.
+                        </p>
+                    </div>
+
+                    {/* How We Use Your Information Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
+                        <h2
+                            className="text-black mb-6"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "32px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            How We Use Your Information
+                        </h2>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            We use your data to:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>Register you for and manage events</li>
+                            <li>
+                                Communicate with you about events, updates, or
+                                issues
+                            </li>
+                            <li>
+                                Operate and secure our platforms and ID system
+                            </li>
+                            <li>
+                                Assign verified roles in Discord so you can
+                                participate in chat
+                            </li>
+                            <li>Improve and safeguard our services</li>
+                            <li>Comply with legal obligations</li>
+                            <li>
+                                Report anonymized, aggregated statistics to
+                                sponsors and the public
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* How We Share Your Information Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
+                        <h2
+                            className="text-black mb-6"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "32px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            How We Share Your Information
+                        </h2>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            We{" "}
+                            <span className="font-medium text-black">
+                                do not sell your data.
+                            </span>
+                        </p>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            We may share your data:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>
+                                With trusted service providers (e.g., email
+                                platforms, hosting providers, authentication
+                                platforms)
+                            </li>
+                            <li>
+                                With event organizers & venue staff for
+                                emergency contact purposes
+                            </li>
+                            <li>
+                                With event sponsors{" "}
+                                <span className="font-medium text-black">
+                                    only with your explicit, per-event consent
+                                </span>
+                            </li>
+                            <li>
+                                With shipping or fulfillment providers to
+                                deliver prizes or swag
+                            </li>
+                            <li>With legal authorities if required by law</li>
+                        </ul>
+                    </div>
+
+                    {/* Your Rights Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
+                        <h2
+                            className="text-black mb-6"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "32px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            Your Rights
+                        </h2>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            You can exercise the following rights at any time:
+                        </p>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-6 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>
+                                <span className="font-medium text-black">
+                                    Access:
+                                </span>{" "}
+                                View your data via your dashboard or by request
+                            </li>
+                            <li>
+                                <span className="font-medium text-black">
+                                    Correction:
+                                </span>{" "}
+                                Update your information via dashboard or by
+                                contacting us
+                            </li>
+                            <li>
+                                <span className="font-medium text-black">
+                                    Deletion:
+                                </span>{" "}
+                                Request permanent deletion of your data through
+                                your dashboard or by request
+                            </li>
+                            <li>
+                                <span className="font-medium text-black">
+                                    Portability:
+                                </span>{" "}
+                                Request your data in a machine-readable format
+                            </li>
+                            <li>
+                                <span className="font-medium text-black">
+                                    Restriction & Objection:
+                                </span>{" "}
+                                Limit or object to certain processing, as
+                                applicable
+                            </li>
+                        </ul>
+
+                        <h3
+                            className="text-black mb-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "24px",
+                                fontWeight: "500",
+                            }}
+                        >
+                            How to Delete Your Data
+                        </h3>
+
+                        <ul
+                            className="list-disc list-inside text-gray-800 mb-4 space-y-1 ml-4"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            <li>
+                                Log in & click <em>Delete My Data</em> on your
+                                dashboard
+                            </li>
+                            <li>
+                                Or email:{" "}
+                                <span className="font-medium text-black">
+                                    contact@hack.sv
+                                </span>{" "}
+                                with subject: <em>Delete My Account</em>
+                            </li>
+                        </ul>
+
+                        <p
+                            className="text-gray-800 mb-4 leading-relaxed"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "16px",
+                            }}
+                        >
+                            ⚠️ If you are{" "}
+                            <span className="font-medium text-black">
+                                registered for an upcoming or ongoing event
+                            </span>
+                            , you must first unregister from the event{" "}
+                            <span className="font-medium text-black">
+                                at least 48 hours before the event starts
+                            </span>{" "}
+                            before requesting deletion of your data.
+                        </p>
+                    </div>
+
+                    {/* Contact Us Section */}
+                    <div
+                        className="bg-white rounded-lg p-8 mb-8"
+                        style={{ border: "4px solid black" }}
+                    >
+                        <h2
+                            className="text-black mb-6"
+                            style={{
+                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontSize: "32px",
+                                fontWeight: "500",
                             }}
                         >
                             Contact Us
                         </h2>
 
                         <p
-                            className="text-gray-800 leading-relaxed mb-4"
+                            className="text-gray-800 mb-4 leading-relaxed"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
@@ -314,61 +778,62 @@ export default function PrivacyPage() {
                         </p>
 
                         <ul
-                            className="list-disc list-inside text-gray-800 mb-4 space-y-2 ml-4"
+                            className="list-disc list-inside text-gray-800 mb-8 space-y-1 ml-4"
                             style={{
                                 fontFamily: "Barlow Condensed, sans-serif",
                                 fontSize: "16px",
                             }}
                         >
-                            <li className="ml-2">
-                                <strong className="font-semibold text-black">
+                            <li>
+                                <span className="font-medium text-black">
                                     Email:
-                                </strong>{" "}
+                                </span>{" "}
                                 contact@hack.sv
                             </li>
-                            <li className="ml-2">
-                                <strong className="font-semibold text-black">
+                            <li>
+                                <span className="font-medium text-black">
                                     Subject:
-                                </strong>{" "}
-                                <em className="italic text-gray-700">
-                                    Privacy Request - [Your Request Type]
-                                </em>
+                                </span>{" "}
+                                <em>Privacy Request - [Your Request Type]</em>
                             </li>
-                            <li className="ml-2">
-                                <strong className="font-semibold text-black">
+                            <li>
+                                <span className="font-medium text-black">
                                     Response time:
-                                </strong>{" "}
+                                </span>{" "}
                                 within 30 days (or sooner for deletions)
                             </li>
                         </ul>
 
-                        <p
-                            className="text-gray-800 leading-relaxed mb-4"
-                            style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "16px",
-                            }}
-                        >
-                            <strong className="font-semibold text-black">
-                                hack.sv is fiscally sponsored by The Hack
-                                Foundation (d.b.a. Hack Club), a 501(c)(3)
-                                nonprofit (EIN: 81-2908499).
-                            </strong>
-                        </p>
+                        <div className="border-t-2 border-gray-200 pt-6">
+                            <p
+                                className="text-gray-800 mb-4 leading-relaxed"
+                                style={{
+                                    fontFamily: "Barlow Condensed, sans-serif",
+                                    fontSize: "16px",
+                                }}
+                            >
+                                <span className="font-medium text-black">
+                                    hack.sv is a California nonprofit
+                                    organization (EIN: [pending]).
+                                </span>
+                            </p>
 
-                        <p
-                            className="text-gray-800 leading-relaxed mb-4"
-                            style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
-                                fontSize: "16px",
-                            }}
-                        >
-                            <strong className="font-semibold text-black">
-                                Your privacy is a priority at hack.sv — and
-                                always will be.
-                            </strong>
-                        </p>
+                            <p
+                                className="text-gray-800 leading-relaxed"
+                                style={{
+                                    fontFamily: "Barlow Condensed, sans-serif",
+                                    fontSize: "16px",
+                                }}
+                            >
+                                <span className="font-medium text-black">
+                                    Your privacy is a priority at hack.sv — and
+                                    always will be.
+                                </span>
+                            </p>
+                        </div>
                     </div>
+
+                    {/* Closing divs */}
                 </div>
             </div>
         </div>

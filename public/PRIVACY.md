@@ -1,15 +1,14 @@
 # Privacy Policy — hack.sv
 
-**Effective Date:** July 17, 2025  
+**Effective Date:** July 17, 2025
+
 **Last Updated:** July 28, 2025
 
 ---
 
 ## Overview
 
-hack.sv (“we,” “our,” or “us”) is a nonprofit organization dedicated to running educational hackathons and programs for students under 18.  
-We respect your privacy and give you control over your personal information.  
-This Privacy Policy applies to all hack.sv services and platforms, including:
+hack.sv (“we,” “our,” or “us”) is a nonprofit organization dedicated to running educational hackathons and programs for students under 18. We respect your privacy and give you control over your personal information. This Privacy Policy applies to all hack.sv services and platforms, including:
 
 -   Our website ([https://hack.sv](https://hack.sv)) and all its subdomains (e.g., dashboard.hack.sv, id.hack.sv)
 -   Event registration and participation
@@ -26,7 +25,7 @@ By creating an account, registering for an event, or participating in our progra
 
 **hack.sv** is a California nonprofit organization (EIN: [pending]).
 
-**Contact:** contact@hack.sv
+**Contact:** privacy@hack.sv
 **Website:** [https://hack.sv](https://hack.sv)
 
 ---
@@ -159,7 +158,7 @@ We choose shipping and fulfillment providers at our discretion when delivering p
 | Data                                                                               | Retention                                                                             |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | Event-specific sensitive data (e.g., emergency contact, dietary info)              | Deleted **no sooner than two weeks after event** (or longer if required for shipping) |
-| Session data                                                                       | Expires after 1 hour of inactivity                                                    |
+| Session data                                                                       | Expires after 30 days or when you log out                                             |
 | API logs                                                                           | Retained for 30 days                                                                  |
 | Account information (legal name, preferred name, email, DOB, pronouns, Discord ID) | Retained indefinitely unless you delete your account                                  |
 | Photos & videos                                                                    | Retained indefinitely for promotional use                                             |
@@ -182,7 +181,7 @@ You can exercise the following rights at any time:
 ### How to Delete Your Data
 
 -   Log in & click _Delete My Data_ on your dashboard
--   Or email: **contact@hack.sv** with subject: _Delete My Account_
+-   Or email: **privacy@hack.sv** with subject: _Delete My Account_
 
 ⚠️ If you are **registered for an upcoming or ongoing event**, you must first unregister from the event **at least 48 hours before the event starts** before requesting deletion of your data.  
 To unregister:
@@ -268,7 +267,7 @@ We may update this policy from time to time. When we do:
 
 For privacy-related questions or requests:
 
--   **Email:** contact@hack.sv
+-   **Email:** privacy@hack.sv
 -   **Subject:** _Privacy Request - [Your Request Type]_
 -   **Response time:** within 30 days (or sooner for deletions)
 

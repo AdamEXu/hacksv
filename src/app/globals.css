@@ -38,3 +38,118 @@ body {
     color: var(--foreground);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Global link and button styling with animated cyan highlight effect */
+a,
+button.link-style {
+    position: relative;
+    color: black;
+    font-weight: 600; /* Semi-bold */
+    text-decoration: none;
+    font-family: "Barlow Condensed", sans-serif;
+    z-index: 1;
+    overflow: hidden;
+}
+
+a::before,
+button.link-style::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00ccff;
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+/* Create the masking effect with a duplicate text layer */
+a::after,
+button.link-style::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: #00ccff;
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+    padding: inherit;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+a:hover::before,
+button.link-style:hover::before {
+    height: 100%;
+}
+
+a:hover::after,
+button.link-style:hover::after {
+    clip-path: inset(0 0 0 0);
+}
+
+/* Special styling for header links (white text on cyan background) */
+header a,
+header button.link-style {
+    color: white;
+    font-weight: 700; /* Bold */
+}
+
+header a::before,
+header button.link-style::before {
+    background-color: white;
+    height: 0;
+}
+
+header a::after,
+header button.link-style::after {
+    color: #00ccff;
+    background-color: white;
+}
+
+/* Footer styling (same as header - white text on cyan background) */
+footer a,
+footer button.link-style {
+    color: white;
+    font-weight: 700; /* Bold */
+}
+
+footer a::before,
+footer button.link-style::before {
+    background-color: white;
+    height: 1px;
+}
+
+footer a::after,
+footer button.link-style::after {
+    color: #00ccff;
+    background-color: white;
+}
+
+/* Exempt elements with no-link-style class from global link styling */
+a.no-link-style,
+button.no-link-style {
+    color: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    overflow: visible;
+}
+
+a.no-link-style::before,
+button.no-link-style::before,
+a.no-link-style::after,
+button.no-link-style::after {
+    display: none;
+}
+
+header a:hover::before,
+header button.link-style:hover::before {
+    height: 100%;
+}

@@ -141,13 +141,13 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
                                 <div className="py-4 px-4 flex flex-col space-y-3">
                                     <button
                                         onClick={handleSignUpClick}
-                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        className="no-link-style text-white text-lg font-bold py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
                                     >
                                         Sign Up
                                     </button>
                                     <a
                                         href="https://discord.com/invite/32BsffvEf4"
-                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        className="no-link-style text-white text-lg font-bold py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => setIsMenuOpen(false)}
@@ -156,7 +156,7 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
                                     </a>
                                     <a
                                         href="https://app.hack.sv/"
-                                        className="text-white text-lg font-bold no-underline transition-all duration-200 py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
+                                        className="no-link-style text-white text-lg font-bold py-3 px-4 text-center bg-white/10 rounded-lg border border-white/20 active:bg-white/20"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => setIsMenuOpen(false)}
@@ -173,15 +173,17 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
                         <div className="flex items-center space-x-6">
                             <button
                                 onClick={handleSignUpClick}
-                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                className="link-style text-xl px-4 py-2"
+                                data-text="Sign Up"
                             >
                                 Sign Up
                             </button>
                             <a
                                 href="https://discord.com/invite/32BsffvEf4"
-                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                className="text-xl px-4 py-2"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                data-text="Discord"
                             >
                                 Discord
                             </a>
@@ -191,9 +193,10 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
                         <div>
                             <a
                                 href="https://app.hack.sv/"
-                                className="text-white text-xl font-bold no-underline hover:underline transition-all duration-200 px-4 py-2"
+                                className="text-xl px-4 py-2"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                data-text="Dashboard"
                             >
                                 Dashboard
                             </a>

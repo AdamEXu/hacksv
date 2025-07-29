@@ -6,7 +6,7 @@ import Lenis from "lenis";
 import { Header } from "../components/Header";
 import { DocumentRenderer } from "../components/DocumentRenderer";
 
-export default function PrivacyTestPage() {
+export default function PrivacyPolicy() {
     const [markdownContent, setMarkdownContent] = useState<string>("");
 
     // Initialize Lenis smooth scroll
@@ -42,7 +42,7 @@ export default function PrivacyTestPage() {
     }, []);
 
     // Fixed logo position at top (no scroll animation)
-    const logoY = useMotionValue(14); // Fixed at top position
+    const logoY = useMotionValue(15); // Fixed at top position
     const logoScale = useMotionValue(1); // Fixed at normal scale
 
     if (!markdownContent) {

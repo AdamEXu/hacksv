@@ -15,7 +15,7 @@ export function SignUpForm() {
                     <a
                         href="https://forms.hack.sv/forms/interest"
                         target="_blank"
-                        className="bg-white rounded-lg px-8 py-6 transition-transform hover:scale-105 active:scale-95"
+                        className="no-link-style bg-white rounded-lg px-8 py-6 transition-transform hover:scale-105 active:scale-95"
                         style={{ border: "4px solid black" }}
                     >
                         <h2

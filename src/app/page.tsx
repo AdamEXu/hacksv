@@ -90,7 +90,7 @@ export default function Home() {
     }, []);
 
     // Safari-compatible transforms
-    const logoY = useTransform(scrollY, [0, 600], [startY, 14]);
+    const logoY = useTransform(scrollY, [0, 600], [startY, 15]);
     const logoScale = useTransform(scrollY, [0, 600], [maxScale, 1]);
 
     useEffect(() => {

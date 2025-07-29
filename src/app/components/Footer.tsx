@@ -24,16 +24,17 @@ export function Footer() {
                 <div className="mb-6 flex justify-center items-center space-x-4">
                     <a
                         href="/privacy"
-                        className="text-white hover:underline transition-all duration-200"
+                        className="text-white"
                         style={{
                             fontFamily: "Barlow Condensed, sans-serif",
                             fontSize: "16px",
                             fontWeight: "500",
                         }}
+                        data-text="Privacy Policy"
                     >
                         Privacy Policy
                     </a>
-                    <span 
+                    <span
                         className="text-white"
                         style={{
                             fontFamily: "Barlow Condensed, sans-serif",
@@ -45,12 +46,13 @@ export function Footer() {
                     </span>
                     <a
                         href="/conduct"
-                        className="text-white hover:underline transition-all duration-200"
+                        className="text-white"
                         style={{
                             fontFamily: "Barlow Condensed, sans-serif",
                             fontSize: "16px",
                             fontWeight: "500",
                         }}
+                        data-text="Code of Conduct"
                     >
                         Code of Conduct
                     </a>

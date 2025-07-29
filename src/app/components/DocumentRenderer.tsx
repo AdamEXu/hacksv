@@ -1,5 +1,6 @@
 "use client";
 
+import { JSX } from "react";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
@@ -13,6 +14,12 @@ interface ParsedDocument {
         lastUpdated: string;
     } | null;
     sections: DocumentSection[];
+    footnotes: DocumentFootnote[];
+}
+
+interface DocumentFootnote {
+    id: string;
+    content: string;
 }
 
 interface DocumentSection {
@@ -112,6 +119,31 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                         ))}
                     </div>
                 ))}
+
+                {/* Footnotes */}
+                {parsedDoc.footnotes.length > 0 && (
+                    <div
+                        className="bg-white rounded-lg p-8"
+                        style={{ border: "4px solid black" }}
+                    >
+                        <div className="pt-6 text-sm">
+                            {parsedDoc.footnotes.map((footnote, index) => (
+                                <p
+                                    key={index}
+                                    id={`footnote-${footnote.id}`}
+                                    className="text-gray-600 mb-2"
+                                    style={{
+                                        fontFamily:
+                                            "Barlow Condensed, sans-serif",
+                                        fontSize: "14px",
+                                    }}
+                                >
+                                    <sup>{footnote.id}</sup> {footnote.content}
+                                </p>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
@@ -124,6 +156,7 @@ function parseMarkdown(markdown: string): ParsedDocument {
     let title = "";
     let dates = null;
     const sections: DocumentSection[] = [];
+    const footnotes: DocumentFootnote[] = [];
     let currentSection: DocumentSection | null = null;
 
     // Extract title and parse sections
@@ -192,7 +225,23 @@ function parseMarkdown(markdown: string): ParsedDocument {
         sections.push(currentSection);
     }
 
-    return { title, dates, sections };
+    // Parse footnotes from the markdown
+    parseFootnotes(markdown, footnotes);
+
+    return { title, dates, sections, footnotes };
+}
+
+function parseFootnotes(markdown: string, footnotes: DocumentFootnote[]): void {
+    // Parse footnote definitions like [^1]: footnote text
+    const footnoteRegex = /\[\^(\d+)\]:\s*(.+?)(?=\n\[\^|\n\n|\n$|$)/g;
+    let match;
+
+    while ((match = footnoteRegex.exec(markdown)) !== null) {
+        footnotes.push({
+            id: match[1],
+            content: match[2].trim(),
+        });
+    }
 }
 
 function extractTextFromNode(node: MarkdownNode): string {
@@ -368,8 +417,12 @@ function renderNode(node: MarkdownNode): JSX.Element {
             );
 
         case "link":
+            const linkText =
+                node.children
+                    ?.map((child) => (child.type === "text" ? child.value : ""))
+                    .join("") || "";
             return (
-                <a href={node.url} className="text-blue-600 hover:underline">
+                <a href={node.url} data-text={linkText}>
                     {node.children?.map((child, i) => (
                         <span key={i}>{renderNode(child)}</span>
                     ))}
@@ -377,6 +430,47 @@ function renderNode(node: MarkdownNode): JSX.Element {
             );
 
         case "text":
+            // Handle footnote references like [^1]
+            if (node.value) {
+                const footnoteRefRegex = /\[\^(\d+)\]/g;
+                const parts = node.value.split(footnoteRefRegex);
+
+                return (
+                    <>
+                        {parts.map((part, i) => {
+                            // If this part is a number (footnote ID), render as clickable link
+                            if (i % 2 === 1) {
+                                return (
+                                    <button
+                                        key={i}
+                                        onClick={() => {
+                                            const element =
+                                                document.getElementById(
+                                                    `footnote-${part}`
+                                                );
+                                            if (element) {
+                                                element.scrollIntoView({
+                                                    behavior: "smooth",
+                                                });
+                                            }
+                                        }}
+                                        className="text-black hover:opacity-70 underline cursor-pointer"
+                                        style={{
+                                            fontFamily:
+                                                "Barlow Condensed, sans-serif",
+                                            textDecorationColor: "#00CCFF",
+                                        }}
+                                    >
+                                        <sup>{part}</sup>
+                                    </button>
+                                );
+                            }
+                            // Regular text
+                            return part;
+                        })}
+                    </>
+                );
+            }
             return <>{node.value}</>;
 
         case "break":

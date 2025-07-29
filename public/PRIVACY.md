@@ -1,4 +1,4 @@
-# Privacy Policy — hack.sv
+# Privacy Policy
 
 **Effective Date:** July 17, 2025
 

@@ -56,6 +56,28 @@ export function Footer() {
                     >
                         Code of Conduct
                     </a>
+                    <span
+                        className="text-white"
+                        style={{
+                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontSize: "16px",
+                            fontWeight: "500",
+                        }}
+                    >
+                        •
+                    </span>
+                    <a
+                        href="/security"
+                        className="text-white"
+                        style={{
+                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontSize: "16px",
+                            fontWeight: "500",
+                        }}
+                        data-text="Security"
+                    >
+                        Security
+                    </a>
                 </div>
 
                 {/* Fiscal Sponsorship Notice */}

@@ -99,7 +99,7 @@ button.link-style:hover::after {
 header a,
 header button.link-style {
     color: white;
-    font-weight: 700; /* Bold */
+    font-weight: 600; /* Semi-bold */
 }
 
 header a::before,
@@ -118,7 +118,7 @@ header button.link-style::after {
 footer a,
 footer button.link-style {
     color: white;
-    font-weight: 700; /* Bold */
+    font-weight: 600; /* Semi-bold */
 }
 
 footer a::before,

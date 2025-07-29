@@ -101,8 +101,11 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                 {parsedDoc.sections.map((section, index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-lg p-8 mb-8"
-                        style={{ border: "4px solid black" }}
+                        className="rounded-lg p-8 mb-8"
+                        style={{
+                            border: "4px solid black",
+                            backgroundColor: "white",
+                        }}
                     >
                         <h2
                             className="text-black mb-6"
@@ -123,8 +126,11 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                 {/* Footnotes */}
                 {parsedDoc.footnotes.length > 0 && (
                     <div
-                        className="bg-white rounded-lg p-8"
-                        style={{ border: "4px solid black" }}
+                        className="rounded-lg p-8"
+                        style={{
+                            border: "4px solid black",
+                            backgroundColor: "white",
+                        }}
                     >
                         <div className="pt-6 text-sm">
                             {parsedDoc.footnotes.map((footnote, index) => (

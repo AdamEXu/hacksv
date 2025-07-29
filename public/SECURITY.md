@@ -52,9 +52,9 @@ See our [Privacy Policy](https://hack.sv/privacy#third-party-services) for full 
 
 If you believe you’ve discovered a vulnerability or security issue with hack.sv, please report it privately:
 
--   **Email:** security@hack.sv
+-   **Email:** <security@hack.sv>
 -   Please include as much detail as possible (URLs, reproduction steps, relevant metadata).
--   We will respond within **72 hours** (usually sooner).
+-   We will respond within **3 business days** (usually sooner).
 -   Please **do not publicly disclose** vulnerabilities until we have confirmed and fixed them.
 
 ---
@@ -73,7 +73,7 @@ If you believe you’ve discovered a vulnerability or security issue with hack.s
 In the event of a confirmed data breach or major incident:
 
 -   We will investigate and take immediate action.
--   Affected users will be notified within **72 hours** via email.
+-   Affected users will be notified within **3 business days** via email.
 -   We may publish a public incident summary once resolved.
 
 ---
@@ -82,7 +82,7 @@ In the event of a confirmed data breach or major incident:
 
 If you have questions about security at hack.sv:
 
--   **Email:** security@hack.sv
+-   **Email:** <security@hack.sv>
 -   **Subject:** _Security Inquiry_
 
 ---

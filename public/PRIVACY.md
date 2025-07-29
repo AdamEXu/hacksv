@@ -25,7 +25,7 @@ By creating an account, registering for an event, or participating in our progra
 
 **hack.sv** is a California nonprofit organization (EIN: [pending]).
 
-**Contact:** privacy@hack.sv
+**Contact:** <privacy@hack.sv>
 **Website:** [https://hack.sv](https://hack.sv)
 
 ---
@@ -181,18 +181,18 @@ You can exercise the following rights at any time:
 ### How to Delete Your Data
 
 -   Log in & click _Delete My Data_ on your dashboard
--   Or email: **privacy@hack.sv** with subject: _Delete My Account_
+-   Or email: **<privacy@hack.sv>** with subject: _Delete My Account_
 
-⚠️ If you are **registered for an upcoming or ongoing event**, you must first unregister from the event **at least 48 hours before the event starts** before requesting deletion of your data.  
+⚠️ If you are **registered for an upcoming or ongoing event**, you must first unregister from the event **at least 2 business days before the event starts** before requesting deletion of your data.  
 To unregister:
 
--   Use the _Unregister_ / _Remove Registration_ button in your dashboard (exact wording may vary), **at least 48 hours before the event starts**,
+-   Use the _Unregister_ / _Remove Registration_ button in your dashboard (exact wording may vary), **at least 2 business days before the event starts**,
 -   Or, if emailing, explicitly state you wish to cancel your event registration in your request.
 
-If you do not unregister at least 48 hours in advance, we assume you intend to attend the event.  
-After the 48-hour cutoff, the dashboard _Unregister_ button will be disabled, and we will decline any deletion requests until **two weeks after the event concludes (or longer if required for shipping purposes).**
+If you do not unregister at least 2 business days in advance, we assume you intend to attend the event.  
+After the 2 business day cutoff, the dashboard _Unregister_ button will be disabled, and we will decline any deletion requests until **two weeks after the event concludes (or longer if required for shipping purposes).**
 
-Once eligible, we will confirm deletion within 48 hours.
+Once eligible, we will confirm deletion within 2 business days.
 
 ### Parents & Guardians
 
@@ -211,7 +211,7 @@ We protect your data with:
 -   Administrative safeguards & limited access
 -   Audit logs of admin actions
 
-If a data breach occurs, we will notify affected users within **72 hours** and take immediate action.
+If a data breach occurs, we will notify affected users within **3 business days** and take immediate action.
 
 ---
 
@@ -267,7 +267,7 @@ We may update this policy from time to time. When we do:
 
 For privacy-related questions or requests:
 
--   **Email:** privacy@hack.sv
+-   **Email:** <privacy@hack.sv>
 -   **Subject:** _Privacy Request - [Your Request Type]_
 -   **Response time:** within 30 days (or sooner for deletions)
 

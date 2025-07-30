@@ -1,12 +1,12 @@
 # Security Policy
 
-**Last Updated:** July 28, 2025
+**Last Updated:** July 30, 2025
 
 ---
 
 ## Overview
 
-hack.sv is committed to protecting the security of our participants, organizers, and platform. We follow modern security practices to protect your data, accounts, and experience across all our services.  
+Hack SV is committed to protecting the security of our participants, organizers, and platform. We follow modern security practices to protect your data, accounts, and experience across all our services.  
 This policy describes the steps we take to safeguard our systems, what happens in the case of a security issue, and how you can report one to us.
 
 ---
@@ -72,15 +72,16 @@ If you believe you’ve discovered a vulnerability or security issue with hack.s
 
 In the event of a confirmed data breach or major incident:
 
--   We will investigate and take immediate action.
+-   We will initiate a thorough investigation and take immediate corrective actions.
 -   Affected users will be notified within **3 business days** via email.
--   We may publish a public incident summary once resolved.
+-   A public incident summary may be published upon resolution, depending on the scope and impact.
+-   We may offer a reward based on the severity and nature of the issue, at our discretion.
 
 ---
 
 ## Contact
 
-If you have questions about security at hack.sv:
+If you have questions about security at Hack SV:
 
 -   **Email:** <security@hack.sv>
 -   **Subject:** _Security Inquiry_

@@ -2,15 +2,15 @@
 
 **Effective Date:** July 17, 2025
 
-**Last Updated:** July 28, 2025
+**Last Updated:** July 30, 2025
 
 ---
 
 ## Overview
 
-hack.sv (“we,” “our,” or “us”) is a nonprofit organization dedicated to running educational hackathons and programs for students under 18. We respect your privacy and give you control over your personal information. This Privacy Policy applies to all hack.sv services and platforms, including:
+Hack SV (dba hack.sv) (“we,” “our,” or “us”) is a nonprofit organization dedicated to running educational hackathons and programs for students under 18. We respect your privacy and give you control over your personal information. This Privacy Policy applies to all hack.sv services and platforms, including:
 
--   Our website ([https://hack.sv](https://hack.sv)) and all its subdomains (e.g., dashboard.hack.sv, id.hack.sv)
+-   Our website ([https://hack.sv](https://hack.sv)) and all its subdomains (e.g., app.hack.sv, id.hack.sv)
 -   Event registration and participation
 -   Communications (emails, newsletters, announcements)
 -   Social and community platforms (e.g., Discord)
@@ -23,7 +23,7 @@ By creating an account, registering for an event, or participating in our progra
 
 ## Data Controller
 
-**hack.sv** is a California nonprofit organization (EIN: [pending]).
+**Hack SV (dba hack.sv)** is a California nonprofit organization (EIN: 39-3466775) with pending 501(c)(3) status.
 
 **Contact:** <privacy@hack.sv>
 **Website:** [https://hack.sv](https://hack.sv)
@@ -273,6 +273,6 @@ For privacy-related questions or requests:
 
 ---
 
-**hack.sv is a California nonprofit organization (EIN: [pending]).**
+**Hack SV (dba hack.sv) is a California nonprofit organization (EIN: 39-3466775) with pending 501(c)(3) status.**
 
 **Your privacy is a priority at hack.sv — and always will be.**

@@ -17,7 +17,7 @@ export function Footer() {
                         fontWeight: "600",
                     }}
                 >
-                    © 2025 hack.sv
+                    © 2025 Hack SV
                 </p>
 
                 {/* Privacy, Conduct, and Security Links */}
@@ -89,8 +89,14 @@ export function Footer() {
                         lineHeight: "1.5",
                     }}
                 >
-                    hack.sv is fiscally sponsored by The Hack Foundation (d.b.a.
-                    Hack Club), a 501(c)(3) nonprofit (EIN: 81-2908499).
+                    <a
+                        href="https://hacksv.org"
+                        data-text="Hack SV (dba hack.sv)"
+                    >
+                        Hack SV (dba hack.sv)
+                    </a>{" "}
+                    is a California nonprofit organization (EIN: 39-3466775)
+                    with pending 501(c)(3) status.
                 </p>
             </div>
         </footer>

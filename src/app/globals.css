@@ -64,6 +64,53 @@ button.link-style::before {
     z-index: -1;
 }
 
+/* Alternative approach for multi-line links using background gradient with masking */
+a.multiline,
+button.link-style.multiline {
+    position: relative;
+    background-image: linear-gradient(to right, #00ccff 0%, #00ccff 100%);
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    transition: background-size 0.3s ease;
+}
+
+a.multiline::before,
+button.link-style.multiline::before {
+    display: none;
+}
+
+/* Keep the masking effect for multiline links */
+a.multiline::after,
+button.link-style.multiline::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: #00ccff;
+    display: flex;
+    align-items: center;
+    justify-content: inherit;
+    padding: inherit;
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+a.multiline:hover,
+button.link-style.multiline:hover {
+    background-size: 100% 100%;
+}
+
+a.multiline:hover::after,
+button.link-style.multiline:hover::after {
+    clip-path: inset(0 0 0 0);
+}
+
 /* Create the masking effect with a duplicate text layer */
 a::after,
 button.link-style::after {

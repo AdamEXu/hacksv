@@ -2,7 +2,7 @@
 
 **Effective Date:** July 17, 2025
 
-**Last Updated:** July 30, 2025
+**Last Updated:** August 5, 2025
 
 ---
 
@@ -40,7 +40,19 @@ When you visit our website, we may collect:
 -   Browser & device information
 -   Pages visited & actions taken (for security & performance)
 
-We do not use tracking or advertising cookies, but some embedded third-party content (e.g., YouTube videos, maps) may set their own cookies and collect data when you interact with them.
+We do **not** use:
+
+-   Advertising cookies
+-   Cross-site tracking
+
+We **do use analytics tools** (specifically PostHog) to understand how our platform is used. This includes:
+
+-   Page views and navigation
+-   Button clicks and interactions
+-   Errors and performance metrics
+-   User flows across pages and features
+
+Analytics data **is tied to your account ID and session**. This helps us debug issues, prioritize improvements, and understand engagement.
 
 ---
 
@@ -221,12 +233,10 @@ We only use essential cookies:
 
 -   Session management
 -   CSRF protection
--   Abuse prevention
 
 We do **not** use:
 
 -   Advertising cookies
--   Analytics trackers
 -   Cross-site tracking
 
 Some embedded third-party content (e.g., YouTube videos, maps) may set their own cookies and collect data when you interact with them.

@@ -2,7 +2,7 @@
 
 **Effective Date:** July 17, 2025
 
-**Last Updated:** August 5, 2025
+**Last Updated:** August 6, 2025
 
 ---
 
@@ -10,10 +10,11 @@
 
 Hack SV (dba hack.sv) (“we,” “our,” or “us”) is a nonprofit organization dedicated to running educational hackathons and programs for students under 18. We respect your privacy and give you control over your personal information. This Privacy Policy applies to all hack.sv services and platforms, including:
 
--   Our website ([https://hack.sv](https://hack.sv)) and all its subdomains (e.g., app.hack.sv, id.hack.sv)
+-   Our website ([https://hack.sv](https://hack.sv)) and all its subdomains (e.g., app.hack.sv, id.hack.sv) and all other domains we own or operate (e.g., hacksv.org)
 -   Event registration and participation
 -   Communications (emails, newsletters, announcements)
 -   Social and community platforms (e.g., Discord)
+-   Any other services, features, or functionality we offer now or in the future
 
 hack.sv is an ongoing program that hosts recurring hackathons and related events. Your account can be used across multiple events and remains active unless deleted.
 
@@ -206,6 +207,38 @@ After the 2 business day cutoff, the dashboard _Unregister_ button will be disab
 
 Once eligible, we will confirm deletion within 2 business days.
 
+### Data Deletion Scope and Limitations
+
+When you request account deletion, it's important to understand what data we can and cannot completely remove:
+
+#### What We Can Completely Remove
+
+When you delete your account, we will permanently remove the following data from our primary systems:
+
+-   **Personal information records** in our core database (name, email, date of birth, pronouns, phone number, address, emergency contact, dietary restrictions, etc.)
+-   **Account credentials and authentication data** (login sessions, verification codes, password hashes if applicable)
+-   **User-generated content** that is directly stored and controlled within our systems (profile information, preferences, dashboard data)
+-   **Event registration data** (T-shirt size, attendance records, check-in status)
+
+#### What Cannot Be Guaranteed to Be Completely Removed
+
+Due to technical limitations, legal requirements, and the distributed nature of digital systems, the following data **cannot be guaranteed to be completely wiped** from all possible locations:
+
+-   **Historical email communications** between you and our team, including support requests, event communications, and administrative correspondence
+-   **Messages and interactions** in public Discord channels, community forums, or other third-party platforms where you participated
+-   **Your name, attribution, or contributions** on public project pages, repositories, winner announcements, or published materials
+-   **Photos, videos, or other media** where you appear that may be stored across multiple systems, backups, or have been shared with third parties (as outlined in our photo/video consent policy)
+-   **Cached or archived data** in third-party services, content delivery networks (CDNs), search engines, or backup systems operated by our service providers
+-   **Data required for legal, regulatory, financial, or business continuity purposes** (such as records needed for tax reporting, legal compliance, or audit requirements)
+-   **Aggregated or anonymized statistics** where your individual data has been combined with others in a way that no longer identifies you personally
+-   **System logs and security records** that may contain references to your account activity, which are retained for security and operational purposes
+
+#### Important Distinction
+
+**Account deletion removes your personal identifiable information (PII) from our core operational systems** and prevents further data collection. However, **complete erasure from all possible digital locations** cannot be technically guaranteed due to the distributed nature of modern digital infrastructure, legal retention requirements, and data that exists outside our direct control.
+
+We are committed to removing all data within our direct control and will work with our service providers to request deletion where technically feasible, but we cannot guarantee complete removal from all third-party systems, backups, or archived materials.
+
 ### Parents & Guardians
 
 Parents and guardians of minors may exercise the above rights on behalf of their child by contacting us.
@@ -268,7 +301,7 @@ If you believe we have collected information from a child under 13 without conse
 We may update this policy from time to time. When we do:
 
 -   We’ll update the “Last Updated” date
--   Notify you of significant changes via email
+-   Notify you of significant changes via email and Discord announcement
 -   Post the updated policy at [https://hack.sv/privacy](https://hack.sv/privacy)
 
 ---

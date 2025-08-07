@@ -186,6 +186,19 @@ export default function Home() {
                     called Scrapyard.
                 </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
+                    Sponsors
+                </h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    <a
+                        href="https://www.jukeboxprint.com/custom-stickers"
+                        target="_blank"
+                        data-text="Big shoutout to Jukebox for sponsoring custom stickers at hack.sv! Check them out by clicking here!"
+                    >
+                        Big shoutout to Jukebox for sponsoring custom stickers
+                        at hack.sv! Check them out by clicking here!
+                    </a>
+                </p>
+                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Sign Up Now!
                 </h3>
                 <p className="text-lg text-gray-700 leading-relaxed">

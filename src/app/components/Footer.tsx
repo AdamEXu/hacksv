@@ -89,14 +89,14 @@ export function Footer() {
                         lineHeight: "1.5",
                     }}
                 >
-                    <a
-                        href="https://hacksv.org"
-                        data-text="Hack SV (dba hack.sv)"
-                    >
-                        Hack SV (dba hack.sv)
+                    <a href="https://hacksv.org" data-text="hack.sv">
+                        hack.sv
                     </a>{" "}
-                    is a California nonprofit organization (EIN: 39-3466775)
-                    with pending 501(c)(3) status.
+                    is fiscally sponsored by The Hack Foundation (dba Hack Club,
+                    EIN: 81-4670777).{" "}
+                    <a href="https://hcb.hackclub.com/hacksv" data-text="HCB">
+                        HCB
+                    </a>
                 </p>
             </div>
         </footer>

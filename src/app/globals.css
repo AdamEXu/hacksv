@@ -111,9 +111,9 @@ button.link-style.multiline:hover::after {
     clip-path: inset(0 0 0 0);
 }
 
-/* Create the masking effect with a duplicate text layer */
-a::after,
-button.link-style::after {
+/* Create the masking effect with a duplicate text layer - only for links with data-text */
+a[data-text]::after,
+button.link-style[data-text]::after {
     content: attr(data-text);
     position: absolute;
     top: 0;
@@ -132,13 +132,20 @@ button.link-style::after {
     pointer-events: none;
 }
 
+/* For links without data-text, disable the ::after pseudo-element */
+a:not([data-text])::after,
+button.link-style:not([data-text])::after {
+    display: none;
+}
+
 a:hover::before,
 button.link-style:hover::before {
     height: 100%;
 }
 
-a:hover::after,
-button.link-style:hover::after {
+/* Only apply masking effect to links with data-text */
+a[data-text]:hover::after,
+button.link-style[data-text]:hover::after {
     clip-path: inset(0 0 0 0);
 }
 
@@ -155,10 +162,15 @@ header button.link-style::before {
     height: 0;
 }
 
-header a::after,
-header button.link-style::after {
+header a[data-text]::after,
+header button.link-style[data-text]::after {
     color: #00ccff;
     background-color: white;
+}
+
+header a:not([data-text])::after,
+header button.link-style:not([data-text])::after {
+    display: none;
 }
 
 /* Footer styling (same as header - white text on cyan background) */
@@ -174,10 +186,15 @@ footer button.link-style::before {
     height: 1px;
 }
 
-footer a::after,
-footer button.link-style::after {
+footer a[data-text]::after,
+footer button.link-style[data-text]::after {
     color: #00ccff;
     background-color: white;
+}
+
+footer a:not([data-text])::after,
+footer button.link-style:not([data-text])::after {
+    display: none;
 }
 
 /* Exempt elements with no-link-style class from global link styling */

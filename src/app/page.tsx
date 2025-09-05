@@ -145,7 +145,6 @@ export default function Home() {
             {/* Quotes Carousel */}
             <QuotesCarousel />
 
-            {/* Lorem Ipsum Content for Testing Scroll */}
             <div className="max-w-4xl mx-auto px-8 py-16 space-y-8">
                 <h2 className="text-4xl font-bold text-gray-900 mb-8">
                     What is hack.sv
@@ -198,6 +197,14 @@ export default function Home() {
                         at hack.sv! Check them out by clicking here!
                     </a>
                 </p>
+                <p>
+                    <a
+                        href="https://x-camp.org"
+                        className="w-1/2 block mx-auto p-4 rounded-2xl"
+                    >
+                        <img src="/xcamp.png" alt="X-Camp" className="w-full" />
+                    </a>
+                </p>
                 <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
                     Sign Up Now!
                 </h3>
@@ -207,7 +214,11 @@ export default function Home() {
                     and more information about hack.sv is available. You can
                     also join our Discord server to stay up to date.
                 </p>
-                {/* <p className="text-lg text-gray-700 leading-relaxed"></p> */}
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    We will put more information about hack.sv on this page
+                    soon. Register interest below for more information when that
+                    happens!
+                </p>
                 {/* <div className="h-32"></div> Extra space at bottom */}
             </div>
             <SignUpForm />

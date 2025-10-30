@@ -12,9 +12,8 @@ export function Footer() {
                 <p
                     className="text-white mb-4"
                     style={{
-                        fontFamily: "Barlow Condensed, sans-serif",
+                        fontFamily: "Nunito Sans, sans-serif",
                         fontSize: "16px",
-                        fontWeight: "600",
                     }}
                 >
                     © 2025 Hack SV
@@ -26,9 +25,9 @@ export function Footer() {
                         href="/privacy"
                         className="text-white"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "16px",
-                            fontWeight: "500",
+                            fontWeight: "700",
                         }}
                         data-text="Privacy"
                     >
@@ -37,9 +36,9 @@ export function Footer() {
                     <span
                         className="text-white"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "16px",
-                            fontWeight: "500",
+                            fontWeight: "700",
                         }}
                     >
                         •
@@ -48,9 +47,9 @@ export function Footer() {
                         href="/conduct"
                         className="text-white"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "16px",
-                            fontWeight: "500",
+                            fontWeight: "700",
                         }}
                         data-text="Conduct"
                     >
@@ -59,9 +58,9 @@ export function Footer() {
                     <span
                         className="text-white"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "16px",
-                            fontWeight: "500",
+                            fontWeight: "700",
                         }}
                     >
                         •
@@ -70,9 +69,9 @@ export function Footer() {
                         href="/security"
                         className="text-white"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "16px",
-                            fontWeight: "500",
+                            fontWeight: "700",
                         }}
                         data-text="Security"
                     >
@@ -80,23 +79,21 @@ export function Footer() {
                     </a>
                 </div>
 
-                {/* Fiscal Sponsorship Notice */}
                 <p
                     className="text-white text-sm leading-relaxed"
                     style={{
-                        fontFamily: "Barlow Condensed, sans-serif",
+                        fontFamily: "Nunito Sans, sans-serif",
                         fontSize: "14px",
                         lineHeight: "1.5",
                     }}
                 >
-                    <a href="https://hacksv.org" data-text="hack.sv">
-                        hack.sv
+                    <a href="https://hacksv.org" data-text="Hack SV" style={{
+                        fontFamily: "Nunito Sans, sans-serif",
+                        fontWeight: "700",
+                    }}>
+                        Hack SV
                     </a>{" "}
-                    is fiscally sponsored by The Hack Foundation (dba Hack Club,
-                    EIN: 81-4670777).{" "}
-                    <a href="https://hcb.hackclub.com/hacksv" data-text="HCB">
-                        HCB
-                    </a>
+                    is a 501(c)(3) nonprofit organization (EIN: 39-3466775).
                 </p>
             </div>
         </footer>

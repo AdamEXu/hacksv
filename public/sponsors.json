@@ -1,0 +1,17 @@
+[
+    {
+        "name": "X-Camp",
+        "website": "https://x-camp.org",
+        "logo": "/sponsors/X-Camp.png"
+    },
+    {
+        "name": "TRAE",
+        "website": "https://trae.ai",
+        "logo": "/sponsors/TRAE.png"
+    },
+    {
+        "name": "AWS",
+        "website": "https://aws.amazon.com/",
+        "logo": "/sponsors/AWS.png"
+    }
+]

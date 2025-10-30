@@ -8,7 +8,7 @@
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-    --font-sans: var(--font-barlow-condensed);
+    --font-sans: var(--font-nunito-sans);
     --font-mono: var(--font-vt323);
 }
 
@@ -36,7 +36,7 @@ body {
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-nunito-sans), sans-serif;
 }
 
 /* Global link and button styling with animated cyan highlight effect */
@@ -44,9 +44,9 @@ a,
 button.link-style {
     position: relative;
     color: black;
-    font-weight: 600; /* Semi-bold */
+    font-weight: 700; /* Bold */
     text-decoration: none;
-    font-family: "Barlow Condensed", sans-serif;
+    font-family: var(--font-nunito-sans), sans-serif;
     z-index: 1;
     overflow: hidden;
 }
@@ -153,7 +153,7 @@ button.link-style[data-text]:hover::after {
 header a,
 header button.link-style {
     color: white;
-    font-weight: 600; /* Semi-bold */
+    font-weight: 700; /* Semi-bold */
 }
 
 header a::before,

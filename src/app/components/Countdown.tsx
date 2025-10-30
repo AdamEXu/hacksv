@@ -11,7 +11,7 @@ interface TimeLeft {
 
 // July 23, 2025 at 10:00 AM PST (UTC-8)
 // Convert to UTC: 10:00 AM PST = 6:00 PM UTC
-const TARGET_DATE = new Date("2025-07-23T18:00:00.000Z").getTime();
+const TARGET_DATE = new Date("2025-11-10T02:00:00.000Z").getTime();
 
 const calculateTimeLeft = (): TimeLeft => {
     const currentTime = Date.now();
@@ -81,23 +81,8 @@ export default function Countdown() {
     };
 
     return (
-        <div
-            style={{
-                width: "100vw",
-                height: "100vh",
-                backgroundColor: "#00CCFF",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: 0,
-                padding: 0,
-            }}
-        >
             <div
                 style={{
-                    backgroundColor: "white",
-                    borderRadius: "8px",
-                    border: "4px solid black",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -133,12 +118,13 @@ export default function Countdown() {
                                 width: "64px",
                                 textAlign: "center",
                             }}
+                            suppressHydrationWarning
                         >
                             {formatNumber(timeLeft.days)}
                         </div>
                         <div
                             style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontFamily: "Nunito Sans, sans-serif",
                                 fontSize: "18px",
                                 color: "black",
                                 marginTop: "4px",
@@ -178,12 +164,13 @@ export default function Countdown() {
                                 width: "64px",
                                 textAlign: "center",
                             }}
+                            suppressHydrationWarning
                         >
                             {formatNumber(timeLeft.hours)}
                         </div>
                         <div
                             style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontFamily: "Nunito Sans, sans-serif",
                                 fontSize: "18px",
                                 color: "black",
                                 marginTop: "4px",
@@ -223,12 +210,13 @@ export default function Countdown() {
                                 width: "64px",
                                 textAlign: "center",
                             }}
+                            suppressHydrationWarning
                         >
                             {formatNumber(timeLeft.minutes)}
                         </div>
                         <div
                             style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontFamily: "Nunito Sans, sans-serif",
                                 fontSize: "18px",
                                 color: "black",
                                 marginTop: "4px",
@@ -268,12 +256,13 @@ export default function Countdown() {
                                 width: "64px",
                                 textAlign: "center",
                             }}
+                            suppressHydrationWarning
                         >
                             {formatNumber(timeLeft.seconds)}
                         </div>
                         <div
                             style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontFamily: "Nunito Sans, sans-serif",
                                 fontSize: "18px",
                                 color: "black",
                                 marginTop: "4px",
@@ -284,6 +273,5 @@ export default function Countdown() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }

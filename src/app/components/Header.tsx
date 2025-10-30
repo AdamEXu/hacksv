@@ -29,7 +29,7 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
             // Scroll down past the quote section with Lenis for smooth animation
             if (lenis) {
                 lenis.scrollTo(700, {
-                    duration: 2,
+                    duration: 1.2,
                     easing: (t: number) => 1 - Math.pow(1 - t, 3),
                 });
             } else {
@@ -39,7 +39,7 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
             // Scroll to top with Lenis
             if (lenis) {
                 lenis.scrollTo(0, {
-                    duration: 1.5,
+                    duration: 1,
                     easing: (t: number) => 1 - Math.pow(1 - t, 3),
                 });
             } else {

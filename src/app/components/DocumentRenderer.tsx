@@ -65,7 +65,7 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                             <p
                                 className="text-white mb-2"
                                 style={{
-                                    fontFamily: "Barlow Condensed, sans-serif",
+                                    fontFamily: "Nunito Sans, sans-serif",
                                     fontSize: "18px",
                                     fontWeight: "500",
                                 }}
@@ -80,7 +80,7 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                             <p
                                 className="text-white"
                                 style={{
-                                    fontFamily: "Barlow Condensed, sans-serif",
+                                    fontFamily: "Nunito Sans, sans-serif",
                                     fontSize: "18px",
                                     fontWeight: "500",
                                 }}
@@ -110,7 +110,7 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                         <h2
                             className="text-black mb-6"
                             style={{
-                                fontFamily: "Barlow Condensed, sans-serif",
+                                fontFamily: "Nunito Sans, sans-serif",
                                 fontSize: "32px",
                                 fontWeight: "500",
                             }}
@@ -140,7 +140,7 @@ export function DocumentRenderer({ markdown }: DocumentRendererProps) {
                                     className="text-gray-600 mb-2"
                                     style={{
                                         fontFamily:
-                                            "Barlow Condensed, sans-serif",
+                                            "Nunito Sans, sans-serif",
                                         fontSize: "14px",
                                     }}
                                 >
@@ -286,7 +286,7 @@ function renderListItem(node: MarkdownNode): JSX.Element {
 
 function renderNode(node: MarkdownNode): JSX.Element {
     const baseTextStyle = {
-        fontFamily: "Barlow Condensed, sans-serif",
+        fontFamily: "Nunito Sans, sans-serif",
         fontSize: "16px",
     };
 
@@ -297,7 +297,7 @@ function renderNode(node: MarkdownNode): JSX.Element {
                     <h3
                         className="text-black mb-4 mt-8"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "24px",
                             fontWeight: "500",
                         }}
@@ -312,7 +312,7 @@ function renderNode(node: MarkdownNode): JSX.Element {
                     <h4
                         className="text-black mb-4 mt-6"
                         style={{
-                            fontFamily: "Barlow Condensed, sans-serif",
+                            fontFamily: "Nunito Sans, sans-serif",
                             fontSize: "20px",
                             fontWeight: "500",
                         }}
@@ -463,7 +463,7 @@ function renderNode(node: MarkdownNode): JSX.Element {
                                         className="text-black hover:opacity-70 underline cursor-pointer"
                                         style={{
                                             fontFamily:
-                                                "Barlow Condensed, sans-serif",
+                                                "Nunito Sans, sans-serif",
                                             textDecorationColor: "#00CCFF",
                                         }}
                                     >

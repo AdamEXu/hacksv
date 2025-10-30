@@ -1,11 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Barlow_Condensed, VT323 } from "next/font/google";
+import { Nunito_Sans, VT323 } from "next/font/google";
 
-const barlowCondensed = Barlow_Condensed({
-    variable: "--font-barlow-condensed",
+const nunitoSans = Nunito_Sans({
+    variable: "--font-nunito-sans",
     subsets: ["latin"],
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    weight: ["200", "300", "400", "600", "700", "800", "900"],
 });
 
 const vt323 = VT323({
@@ -60,7 +60,7 @@ export default function RootLayout({
                 <meta property="og:image:height" content="630" />
             </head>
             <body
-                className={`${barlowCondensed.variable} ${vt323.variable} antialiased`}
+                className={`${nunitoSans.variable} ${vt323.variable} antialiased`}
             >
                 {children}
             </body>

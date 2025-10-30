@@ -7,8 +7,7 @@ import { Header } from "./components/Header";
 import { ImageGrid } from "./components/ImageGrid";
 import { QuotesCarousel } from "./components/QuotesCarousel";
 import { fetchAllImages } from "./api/imageApi";
-import Countdown from "./components/Countdown";
-import { Sponsors } from "./components/Sponsors";
+import { SignUpForm } from "./components/SignUpForm";
 import { Footer } from "./components/Footer";
 
 export default function Home() {
@@ -148,18 +147,78 @@ export default function Home() {
 
             <div className="max-w-4xl mx-auto px-8 py-16 space-y-8">
                 <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                    hack.sv
+                    What is hack.sv
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    More info coming soon! I wonder if the countdown below has anything to do with it...
+                    The theme of hack.sv is to build real-world AI applications
+                    on hardware devices, using only local inference and no
+                    reliance on cloud services. Attendees will need to optimize
+                    their projects to run completely offline on limited
+                    hardware, mimicking real-world constraints. We are the first
+                    real AI inference hackathon for high schoolers.
                 </p>
-                <Countdown />
-                <p>Any questions? Email us at <a href="mailto:team@hack.sv" data-text="team@hack.sv">team@hack.sv</a> and we'll get back to you as soon as possible.
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    We aim to teach real world skills that are important in the
+                    AI era, empowering attendees to build something they're
+                    truly proud of and would share with their friends and
+                    family.
                 </p>
-            </div>
-            <Sponsors />
-            <div className="max-w-4xl mx-auto px-8 py-16 space-y-8">
-                <p>Don't forget to join our Discord! <a href="https://discord.com/invite/32BsffvEf4" target="_blank" rel="noopener noreferrer" data-text="Invite Link">Invite Link</a></p>
+                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
+                    Our Mission
+                </h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    Our mission is to allow attendees to walk out of hack.sv
+                    knowing they've built something meaningful, not just another
+                    fragile ChatGPT wrapper with a fancy UI.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    At many hackathons, recorded demos, mock ups, and slideshows
+                    overshadow technical achievement. At hack.sv, we would like
+                    to reward innovative concepts that actually work.
+                </p>
+                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
+                    Previous Events
+                </h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    We've run multiple hackathons in the past, including a game
+                    jam called Counterspell and another hardware hackathon
+                    called Scrapyard.
+                </p>
+                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
+                    Sponsors
+                </h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    <a
+                        href="https://www.jukeboxprint.com/custom-stickers"
+                        target="_blank"
+                        data-text="Big shoutout to Jukebox for sponsoring custom stickers at hack.sv! Check them out by clicking here!"
+                    >
+                        Big shoutout to Jukebox for sponsoring custom stickers
+                        at hack.sv! Check them out by clicking here!
+                    </a>
+                </p>
+                <p>
+                    <a
+                        href="https://x-camp.org"
+                        className="w-1/2 block mx-auto p-4 rounded-2xl"
+                    >
+                        <img src="/xcamp.png" alt="X-Camp" className="w-full" />
+                    </a>
+                </p>
+                <h3 className="text-2xl font-semibold text-gray-900 mt-12 mb-6">
+                    Sign Up Now!
+                </h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    We haven't opened sign ups quite yet. But fill out our
+                    interest form to be the first to know when sign ups do open
+                    and more information about hack.sv is available. You can
+                    also join our Discord server to stay up to date.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    We will put more information about hack.sv on this page
+                    soon. Register interest below for more information when that
+                    happens!
+                </p>
             </div>
             <Footer />
         </div>

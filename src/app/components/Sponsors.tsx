@@ -32,7 +32,7 @@ export function Sponsors() {
                             href={`${sponsor.website}?utm_source=hacksv&ref=hacksv`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="no-link-style block bg-white transition-all duration-300 p-8"
+                            className="no-link-style block bg-white rounded-lg transition-all duration-300 p-8"
                             style={{
                                 transform: "translateY(0)",
                             }}

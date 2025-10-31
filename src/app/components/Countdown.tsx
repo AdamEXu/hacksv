@@ -95,6 +95,7 @@ export default function Countdown() {
             >
                 {/* Container for numbers and labels with perfect alignment */}
                 <div
+                    className="countdown-container"
                     style={{
                         display: "flex",
                         alignItems: "center",
@@ -109,41 +110,16 @@ export default function Countdown() {
                             alignItems: "center",
                         }}
                     >
-                        <div
-                            style={{
-                                fontFamily: "VT323, monospace",
-                                fontSize: "64px",
-                                lineHeight: "64px",
-                                color: "black",
-                                width: "64px",
-                                textAlign: "center",
-                            }}
-                            suppressHydrationWarning
-                        >
+                        <div className="countdown-number" suppressHydrationWarning>
                             {formatNumber(timeLeft.days)}
                         </div>
-                        <div
-                            style={{
-                                fontFamily: "Nunito Sans, sans-serif",
-                                fontSize: "18px",
-                                color: "black",
-                                marginTop: "4px",
-                            }}
-                        >
+                        <div className="countdown-label">
                             Days
                         </div>
                     </div>
 
                     {/* Colon */}
-                    <div
-                        style={{
-                            fontFamily: "VT323, monospace",
-                            fontSize: "64px",
-                            lineHeight: "64px",
-                            color: "black",
-                            marginBottom: "22px", // Offset to align with numbers
-                        }}
-                    >
+                    <div className="countdown-colon">
                         :
                     </div>
 
@@ -155,41 +131,16 @@ export default function Countdown() {
                             alignItems: "center",
                         }}
                     >
-                        <div
-                            style={{
-                                fontFamily: "VT323, monospace",
-                                fontSize: "64px",
-                                lineHeight: "64px",
-                                color: "black",
-                                width: "64px",
-                                textAlign: "center",
-                            }}
-                            suppressHydrationWarning
-                        >
+                        <div className="countdown-number" suppressHydrationWarning>
                             {formatNumber(timeLeft.hours)}
                         </div>
-                        <div
-                            style={{
-                                fontFamily: "Nunito Sans, sans-serif",
-                                fontSize: "18px",
-                                color: "black",
-                                marginTop: "4px",
-                            }}
-                        >
+                        <div className="countdown-label">
                             Hours
                         </div>
                     </div>
 
                     {/* Colon */}
-                    <div
-                        style={{
-                            fontFamily: "VT323, monospace",
-                            fontSize: "64px",
-                            lineHeight: "64px",
-                            color: "black",
-                            marginBottom: "22px", // Offset to align with numbers
-                        }}
-                    >
+                    <div className="countdown-colon">
                         :
                     </div>
 
@@ -201,41 +152,16 @@ export default function Countdown() {
                             alignItems: "center",
                         }}
                     >
-                        <div
-                            style={{
-                                fontFamily: "VT323, monospace",
-                                fontSize: "64px",
-                                lineHeight: "64px",
-                                color: "black",
-                                width: "64px",
-                                textAlign: "center",
-                            }}
-                            suppressHydrationWarning
-                        >
+                        <div className="countdown-number" suppressHydrationWarning>
                             {formatNumber(timeLeft.minutes)}
                         </div>
-                        <div
-                            style={{
-                                fontFamily: "Nunito Sans, sans-serif",
-                                fontSize: "18px",
-                                color: "black",
-                                marginTop: "4px",
-                            }}
-                        >
+                        <div className="countdown-label">
                             Minutes
                         </div>
                     </div>
 
                     {/* Colon */}
-                    <div
-                        style={{
-                            fontFamily: "VT323, monospace",
-                            fontSize: "64px",
-                            lineHeight: "64px",
-                            color: "black",
-                            marginBottom: "22px", // Offset to align with numbers
-                        }}
-                    >
+                    <div className="countdown-colon">
                         :
                     </div>
 
@@ -247,27 +173,10 @@ export default function Countdown() {
                             alignItems: "center",
                         }}
                     >
-                        <div
-                            style={{
-                                fontFamily: "VT323, monospace",
-                                fontSize: "64px",
-                                lineHeight: "64px",
-                                color: "black",
-                                width: "64px",
-                                textAlign: "center",
-                            }}
-                            suppressHydrationWarning
-                        >
+                        <div className="countdown-number" suppressHydrationWarning>
                             {formatNumber(timeLeft.seconds)}
                         </div>
-                        <div
-                            style={{
-                                fontFamily: "Nunito Sans, sans-serif",
-                                fontSize: "18px",
-                                color: "black",
-                                marginTop: "4px",
-                            }}
-                        >
+                        <div className="countdown-label">
                             Seconds
                         </div>
                     </div>

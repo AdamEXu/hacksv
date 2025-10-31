@@ -217,3 +217,61 @@ header a:hover::before,
 header button.link-style:hover::before {
     height: 100%;
 }
+
+/* Countdown component styles */
+.countdown-number {
+    font-family: var(--font-vt323), monospace;
+    font-size: 64px;
+    line-height: 64px;
+    color: black;
+    width: 64px;
+    text-align: center;
+}
+
+.countdown-label {
+    font-family: var(--font-nunito-sans), sans-serif;
+    font-size: 18px;
+    color: black;
+    margin-top: 4px;
+}
+
+.countdown-colon {
+    font-family: var(--font-vt323), monospace;
+    font-size: 64px;
+    line-height: 64px;
+    color: black;
+    margin-bottom: 22px;
+}
+
+@media (max-width: 768px) {
+    .countdown-number {
+        font-size: 48px;
+        line-height: 48px;
+        width: 48px;
+    }
+    .countdown-label {
+        font-size: 14px;
+    }
+    .countdown-colon {
+        font-size: 48px;
+        line-height: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-number {
+        font-size: 36px;
+        line-height: 36px;
+        width: 36px;
+    }
+    .countdown-label {
+        font-size: 12px;
+    }
+    .countdown-colon {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    .countdown-container {
+        gap: 4px !important;
+    }
+}

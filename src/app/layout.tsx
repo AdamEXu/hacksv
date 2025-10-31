@@ -6,12 +6,14 @@ const nunitoSans = Nunito_Sans({
     variable: "--font-nunito-sans",
     subsets: ["latin"],
     weight: ["200", "300", "400", "600", "700", "800", "900"],
+    display: "block",
 });
 
 const vt323 = VT323({
     variable: "--font-vt323",
     subsets: ["latin"],
     weight: ["400"],
+    display: "block",
 });
 
 export const metadata: Metadata = {

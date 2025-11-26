@@ -32,6 +32,7 @@ interface MarkdownNode {
     children?: MarkdownNode[];
     value?: string;
     url?: string;
+    alt?: string;
     depth?: number;
     ordered?: boolean;
 }
@@ -433,6 +434,18 @@ function renderNode(node: MarkdownNode): JSX.Element {
                         <span key={i}>{renderNode(child)}</span>
                     ))}
                 </a>
+            );
+
+        case "image":
+            return (
+                <img
+                    src={node.url}
+                    alt={node.alt || ""}
+                    className="max-w-full h-auto rounded-lg my-6"
+                    style={{
+                        border: "2px solid #e5e7eb",
+                    }}
+                />
             );
 
         case "text":

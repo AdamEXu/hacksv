@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
                 port: "",
                 pathname: "/**",
             },
+            {
+                protocol: "https",
+                hostname: "files.slack.com",
+                port: "",
+                pathname: "/**",
+            },
         ],
     },
     async rewrites() {

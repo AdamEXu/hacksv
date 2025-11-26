@@ -6,9 +6,7 @@
 
 This site contains affiliate links, which means we may earn a small commission if you make a purchase through these links.
 
-This doesn't affect your price at all. You'll pay the same amount whether you use our link or go directly to the site. We only recommend products and services we genuinely believe in.
-
-That said, if you'd prefer not to use affiliate links, feel free to navigate directly to any site mentioned.
+This doesn't affect your price at all. You'll pay the same amount whether you use our link or go directly to the site. If you'd prefer not to use affiliate links, feel free to navigate directly to any site mentioned.
 
 ## Stuff we had at Scrapyard
 
@@ -30,15 +28,24 @@ Ok so I am **not** actually recommending any of these items since i haven't pers
 * [260Pcs Micro Momentary Tactile Push Button Switch](https://amzn.to/48nZMLv) - heard these were pretty cheap but the price is also cheap
 * [Digital Multimeter Tester](https://amzn.to/4ogMjuw) - multimeter (insanely cheap) wasn't used at scrapyard and was given away as a prize
 
-## MACBOOK AIR????
+## macbook air
 
-Please don't buy this just because i put an affiliate link here. I know they're really good though and if you happened to be buying one this black friday or whatever (or if a family member was), pretty pretty please click link (it'll actually contribute more than $2 to our bank account!!)
+omg guys pls buy macbook air it's 25 % off and we make a lot of money from this if you actually buy!!!!!!!
 
 In all seriousness though 25% off is a crazy discount, that's like even more than the employee discount. It's the brand new M4 macbook air which is like the this year model, brand new, not used. apple stuff is usually never on sale
 
-in terms of the laptop itself it's really solid. if you're doing video editing or blender or stuff like that you might want to get a better machine, but tbh this is the laptop i'd recommend to most people
-
 [Link to purchase Macbook Air on Amazon](https://amzn.to/48BgojW) - Currently $749.00 (genuinely crazy deal)
+
+## airpod
+
+apparenlty kids buy airpods these days so:
+
+* [Apple AirPods 4](https://amzn.to/48hjKHr) - latest model for $69 is pretty good almost 50% off. no ANC though which is a big L
+* [Apple AirPods 4 but WITH ANC](https://amzn.to/4pqmSYG) - $30 more gets you ANC which is very much worth it imo, still almost 50% off
+* [Apple AirPods Pro 3](https://amzn.to/4isoAXm) - you do NOT need the new pro airpods unless you're buying them for the looks but like whatever i guess. not much discount mostly because just came out a month or two ago
+* [Beats Studio Pro](https://amzn.to/4oeFoSH) - okay these aren't airpods but I personally use these and they're much much much better value than airpods max, audio quality is good, and it's more than 50% off so yay!!! has ANC and pairs to you apple devices like airpods (cuz apple owns beats) but if you don't own apple devices not as worth it instead get the
+* [Sony WH-1000XM6](https://amzn.to/3M1xq23) - dont have these, heard good things about them though. very pricey \*gasp\* but apparently the ANC is really good idk do your own research
+
 
 ## Pinecil
 
@@ -47,3 +54,22 @@ Ok so I personally own a Pinecil and it's *really* good. Was recommended it by s
 [Link to purchase Pinecil on Amazon](https://amzn.to/44wX98G) - Currently $39.99
 
 ![Pinecil](https://files.slack.com/files-pri/T097Y0GQF0B-F0A0AENH7HP/pinecil.jpeg?pub_secret=89ff062466)
+
+
+## other recommends from adam
+
+at this point i'm running out of ideas so some stuff i have on my desk right now:
+
+i use the [GeeekPi Metal Case for Raspberry Pi 5](https://amzn.to/3KgQnwY) case for my pi, not best value but overall pretty good build quality and came with the official pi 5 active cooler thing.
+
+btw, DO NOT BUY RASPBERRY PI FROM AMAZON. they generally have really bad prices cuz they have to factor in prime shipping. micro center has pis on sale right now, highly recommend.
+
+my mouse of choice is [Logitech MX Anywhere 2S](https://amzn.to/4rkXc1p) it's nice and compact and works well. love it.
+
+the controller i use for gaming is [8Bitdo Ultimate 2 Bluetooth Controller](https://amzn.to/4p1B0ro), it's hall effect so no drift, works with switch and ios and mac so i'm satisfied
+
+the usb c dongle i use is [Anker USB C Hub](https://amzn.to/3M0X9aY) but honestly this really depends on your use case. i mainly use it for the microsd card slot, the ethernet port, connecting to hard drives via usb a, and it charges my laptop at the same time which is nice
+
+bought 3 of these last black friday, fire deal [Anker Zolo Magnetic Power Bank, 10,000mAh Wireless Portable Charger](https://amzn.to/3Km3LzU) yes it's a magsafeish (well qi + magnets not magsafe) battery bank and it's a really really good deal $29.99 and it's not one of those sketchy chinese chargers. personally never had any issues with it. the light color ones scuff pretty easily so i recommend the black one
+
+[SABRENT 4 Port USB 3.0 Hub](https://amzn.to/3Xg9Scb) is a powered ac hub, which means that power comes in seperately from the usb port on your laptop. idk why i got a powered hub tbh, i'm only using it to connect peripherals to my pi zero 2w, so kinda overkill for this. we also had one as a prize during counterspell

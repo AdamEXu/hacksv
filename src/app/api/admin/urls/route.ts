@@ -1,8 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/auth";
 
+// Types for URL data
+interface UrlData {
+    url: string;
+    isAffiliate: boolean;
+}
+
 // Redis operations using Upstash REST API
-async function getRedisValue(key: string): Promise<string | null> {
+async function getRedisValue(key: string): Promise<UrlData | null> {
     const url = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
 
@@ -22,14 +28,34 @@ async function getRedisValue(key: string): Promise<string | null> {
         }
 
         const data = await response.json();
-        return data.result || null;
+        const result = data.result;
+
+        if (!result) {
+            return null;
+        }
+
+        // Handle backward compatibility: if it's a plain string, convert to new format
+        if (typeof result === 'string') {
+            // Check if it's a JSON string
+            try {
+                const parsed = JSON.parse(result);
+                if (parsed.url) {
+                    return parsed as UrlData;
+                }
+            } catch {
+                // It's a plain URL string (old format), convert to new format
+                return { url: result, isAffiliate: false };
+            }
+        }
+
+        return result as UrlData;
     } catch (error) {
         console.error("Redis GET error:", error);
         return null;
     }
 }
 
-async function setRedisValue(key: string, value: string): Promise<boolean> {
+async function setRedisValue(key: string, urlData: UrlData): Promise<boolean> {
     const url = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
 
@@ -38,9 +64,11 @@ async function setRedisValue(key: string, value: string): Promise<boolean> {
     }
 
     try {
+        // Store as JSON string
+        const jsonValue = JSON.stringify(urlData);
         const response = await fetch(
             `${url}/set/${encodeURIComponent(key)}/${encodeURIComponent(
-                value
+                jsonValue
             )}`,
             {
                 method: "POST",
@@ -81,7 +109,7 @@ async function deleteRedisValue(key: string): Promise<boolean> {
 }
 
 async function getAllShortUrls(): Promise<
-    Array<{ slug: string; url: string }>
+    Array<{ slug: string; url: string; isAffiliate: boolean }>
 > {
     const url = process.env.UPSTASH_REDIS_REST_URL;
     const token = process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -108,9 +136,13 @@ async function getAllShortUrls(): Promise<
         // Get values for all keys
         const urls = [];
         for (const key of keys) {
-            const value = await getRedisValue(key);
-            if (value) {
-                urls.push({ slug: key, url: value });
+            const urlData = await getRedisValue(key);
+            if (urlData) {
+                urls.push({
+                    slug: key,
+                    url: urlData.url,
+                    isAffiliate: urlData.isAffiliate
+                });
             }
         }
 
@@ -156,7 +188,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
     try {
         await requireAdmin();
-        const { slug, url } = await request.json();
+        const { slug, url, isAffiliate } = await request.json();
 
         if (!slug || !url) {
             return NextResponse.json(
@@ -203,6 +235,7 @@ export async function POST(request: NextRequest) {
             "favicon.ico",
             "sitemap.xml",
             "robots.txt",
+            "go",
         ];
         if (systemRoutes.includes(slug)) {
             return NextResponse.json(
@@ -211,8 +244,12 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Create the short URL
-        const success = await setRedisValue(slug, url);
+        // Create the short URL with affiliate flag
+        const urlData: UrlData = {
+            url,
+            isAffiliate: isAffiliate || false,
+        };
+        const success = await setRedisValue(slug, urlData);
         if (!success) {
             return NextResponse.json(
                 { error: "Failed to create short URL" },
@@ -224,7 +261,8 @@ export async function POST(request: NextRequest) {
             success: true,
             slug,
             url,
-            message: `Short URL created: /${slug} → ${url}`,
+            isAffiliate: urlData.isAffiliate,
+            message: `${urlData.isAffiliate ? 'Affiliate' : 'Short'} URL created: /${slug} → ${url}`,
         });
     } catch (error) {
         if (error instanceof Error) {

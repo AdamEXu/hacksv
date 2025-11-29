@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 interface ShortUrl {
     slug: string;
     url: string;
+    isAffiliate: boolean;
     created_at?: string;
 }
 
@@ -21,6 +22,7 @@ export default function AdminPage() {
     const [shortUrls, setShortUrls] = useState<ShortUrl[]>([]);
     const [newSlug, setNewSlug] = useState("");
     const [newUrl, setNewUrl] = useState("");
+    const [isAffiliate, setIsAffiliate] = useState(false);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -31,13 +33,13 @@ export default function AdminPage() {
 
     const checkAuth = async () => {
         try {
-            // Check if there's a token in the URL (OAuth callback)
+            // Check if there's an authorization code in the URL (OAuth 2.0 callback)
             const urlParams = new URLSearchParams(window.location.search);
-            const token = urlParams.get("token");
+            const code = urlParams.get("code");
 
-            if (token) {
-                // Exchange token for user info
-                const response = await fetch(`/api/admin/auth?token=${token}`);
+            if (code) {
+                // Exchange authorization code for access token and user info
+                const response = await fetch(`/api/admin/auth?code=${code}`);
                 if (response.ok) {
                     const data = await response.json();
                     if (data.user && data.user.is_admin) {
@@ -77,15 +79,22 @@ export default function AdminPage() {
                     window.location.href = "/404";
                     return;
                 } else {
-                    // Redirect to hack-id OAuth
-                    const callbackUrl = encodeURIComponent(
-                        window.location.href
-                    );
+                    // Redirect to hack-id OAuth 2.0 authorization endpoint
                     const hackIdBaseUrl =
                         process.env.NODE_ENV === "development"
                             ? "http://127.0.0.1:3000"
                             : "https://id.hack.sv";
-                    window.location.href = `${hackIdBaseUrl}/oauth?redirect=${callbackUrl}`;
+
+                    // OAuth 2.0 parameters
+                    const clientId = process.env.NEXT_PUBLIC_HACKID_CLIENT_ID || "app_hacksv_admin";
+                    const redirectUri = encodeURIComponent(window.location.origin + "/admin");
+                    const scope = encodeURIComponent("profile email");
+                    const state = Math.random().toString(36).substring(2, 15);
+
+                    // Store state in sessionStorage for CSRF protection
+                    sessionStorage.setItem("oauth_state", state);
+
+                    window.location.href = `${hackIdBaseUrl}/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
                 }
             }
         } catch (err) {
@@ -138,14 +147,15 @@ export default function AdminPage() {
             const response = await fetch("/api/admin/urls", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ slug: newSlug, url: newUrl }),
+                body: JSON.stringify({ slug: newSlug, url: newUrl, isAffiliate }),
             });
 
             const data = await response.json();
             if (response.ok) {
-                setSuccess(`Short URL created: /${newSlug} → ${newUrl}`);
+                setSuccess(`${isAffiliate ? 'Affiliate' : 'Short'} URL created: /${newSlug} → ${newUrl}`);
                 setNewSlug("");
                 setNewUrl("");
+                setIsAffiliate(false);
                 loadShortUrls();
             } else {
                 setError(data.error || "Failed to create short URL");
@@ -298,30 +308,47 @@ export default function AdminPage() {
                                         />
                                     </div>
                                 </div>
+                                <div className="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        id="isAffiliate"
+                                        checked={isAffiliate}
+                                        onChange={(e) =>
+                                            setIsAffiliate(e.target.checked)
+                                        }
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                    />
+                                    <label
+                                        htmlFor="isAffiliate"
+                                        className="ml-2 block text-sm text-gray-700"
+                                    >
+                                        This is an affiliate link (will show disclosure page before redirecting)
+                                    </label>
+                                </div>
                                 <button
                                     type="submit"
                                     className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                                 >
-                                    Add Short URL
+                                    {isAffiliate ? 'Add Affiliate Link' : 'Add Short URL'}
                                 </button>
                             </form>
                         </div>
                     </div>
 
-                    {/* Existing URLs List */}
+                    {/* Regular Short URLs */}
                     <div className="bg-white shadow overflow-hidden sm:rounded-md">
                         <div className="px-4 py-5 sm:px-6">
                             <h3 className="text-lg leading-6 font-medium text-gray-900">
-                                Existing Short URLs ({shortUrls.length})
+                                Regular Short URLs ({shortUrls.filter(u => !u.isAffiliate).length})
                             </h3>
                         </div>
                         <ul className="divide-y divide-gray-200">
-                            {shortUrls.length === 0 ? (
+                            {shortUrls.filter(u => !u.isAffiliate).length === 0 ? (
                                 <li className="px-4 py-4 text-gray-500 text-center">
-                                    No short URLs created yet
+                                    No regular short URLs created yet
                                 </li>
                             ) : (
-                                shortUrls.map((shortUrl) => (
+                                shortUrls.filter(u => !u.isAffiliate).map((shortUrl) => (
                                     <li
                                         key={shortUrl.slug}
                                         className="px-4 py-4 flex items-center justify-between"
@@ -329,6 +356,66 @@ export default function AdminPage() {
                                         <div className="flex-1">
                                             <div className="flex items-center">
                                                 <p className="text-sm font-medium text-blue-600">
+                                                    hack.sv/{shortUrl.slug}
+                                                </p>
+                                                <span className="mx-2 text-gray-400">
+                                                    →
+                                                </span>
+                                                <p className="text-sm text-gray-900 truncate max-w-md">
+                                                    {shortUrl.url}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center space-x-2">
+                                            <a
+                                                href={`/${shortUrl.slug}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-600 hover:text-blue-900 text-sm"
+                                            >
+                                                Test
+                                            </a>
+                                            <button
+                                                onClick={() =>
+                                                    handleDeleteUrl(
+                                                        shortUrl.slug
+                                                    )
+                                                }
+                                                className="text-red-600 hover:text-red-900 text-sm"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </li>
+                                ))
+                            )}
+                        </ul>
+                    </div>
+
+                    {/* Affiliate Links */}
+                    <div className="bg-white shadow overflow-hidden sm:rounded-md">
+                        <div className="px-4 py-5 sm:px-6">
+                            <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                Affiliate Links ({shortUrls.filter(u => u.isAffiliate).length})
+                            </h3>
+                            <p className="mt-1 text-sm text-gray-500">
+                                These links will show a disclosure page before redirecting
+                            </p>
+                        </div>
+                        <ul className="divide-y divide-gray-200">
+                            {shortUrls.filter(u => u.isAffiliate).length === 0 ? (
+                                <li className="px-4 py-4 text-gray-500 text-center">
+                                    No affiliate links created yet
+                                </li>
+                            ) : (
+                                shortUrls.filter(u => u.isAffiliate).map((shortUrl) => (
+                                    <li
+                                        key={shortUrl.slug}
+                                        className="px-4 py-4 flex items-center justify-between"
+                                    >
+                                        <div className="flex-1">
+                                            <div className="flex items-center">
+                                                <p className="text-sm font-medium text-orange-600">
                                                     hack.sv/{shortUrl.slug}
                                                 </p>
                                                 <span className="mx-2 text-gray-400">

@@ -45,6 +45,90 @@ export interface Session {
     expires: number;
 }
 
+/**
+ * Exchange OAuth 2.0 authorization code for access token and user info
+ */
+export async function exchangeCodeForUser(code: string, redirectUri: string): Promise<User> {
+    const hackIdBaseUrl =
+        process.env.NODE_ENV === "development"
+            ? "http://127.0.0.1:3000"
+            : "https://id.hack.sv";
+
+    const clientId = process.env.HACKID_CLIENT_ID;
+    const clientSecret = process.env.HACKID_CLIENT_SECRET;
+
+    if (!clientId || !clientSecret) {
+        throw new Error("HACKID_CLIENT_ID and HACKID_CLIENT_SECRET must be configured");
+    }
+
+    try {
+        // Step 1: Exchange authorization code for access token
+        const tokenUrl = `${hackIdBaseUrl}/oauth/token`;
+        console.log('Exchanging code for token at:', tokenUrl);
+
+        const tokenResponse = await fetch(tokenUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({
+                grant_type: "authorization_code",
+                code: code,
+                redirect_uri: redirectUri,
+                client_id: clientId,
+                client_secret: clientSecret,
+            }),
+        });
+
+        console.log('Token response status:', tokenResponse.status);
+        const responseText = await tokenResponse.text();
+        console.log('Token response body:', responseText.substring(0, 200));
+
+        if (!tokenResponse.ok) {
+            let error;
+            try {
+                error = JSON.parse(responseText);
+            } catch {
+                throw new Error(`Failed to exchange code for token: ${tokenResponse.status} - ${responseText.substring(0, 100)}`);
+            }
+            throw new Error(error.error_description || "Failed to exchange code for token");
+        }
+
+        const tokenData = JSON.parse(responseText);
+        const accessToken = tokenData.access_token;
+
+        // Step 2: Use access token to get user info
+        const userResponse = await fetch(`${hackIdBaseUrl}/api/oauth/user-info`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        });
+
+        if (!userResponse.ok) {
+            const error = await userResponse.json();
+            throw new Error(error.error_description || "Failed to get user info");
+        }
+
+        const userData = await userResponse.json();
+
+        // Map OAuth 2.0 response to User interface
+        return {
+            email: userData.email,
+            legal_name: userData.legal_name,
+            preferred_name: userData.preferred_name,
+            pronouns: userData.pronouns,
+            date_of_birth: userData.dob,
+            is_admin: userData.is_admin || false, // OAuth 2.0 endpoint now returns is_admin
+        };
+    } catch (error) {
+        console.error("OAuth 2.0 code exchange error:", error);
+        throw error;
+    }
+}
+
+/**
+ * LEGACY: Exchange OAuth token for user info (deprecated, use exchangeCodeForUser)
+ */
 export async function exchangeTokenForUser(token: string): Promise<User> {
     const hackIdBaseUrl =
         process.env.NODE_ENV === "development"

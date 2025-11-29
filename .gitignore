@@ -42,3 +42,6 @@ next-env.d.ts
 
 # crush
 .crush
+
+# metabob
+.metabob/

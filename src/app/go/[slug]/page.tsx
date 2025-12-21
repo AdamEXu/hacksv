@@ -83,18 +83,15 @@ export default function AffiliateRedirectPage() {
     return (
         <div
             className="min-h-screen flex items-center justify-center"
-            style={{ backgroundColor: CYAN_COLOR }}
         >
             <div className="text-center max-w-2xl px-6">
                 <h1
-                    className="text-white text-5xl mb-8"
-                    style={{ fontFamily: "VT323, monospace" }}
+                    className="text-black text-5xl mb-8"
                 >
                     Affiliate Link Disclosure
                 </h1>
                 <div
-                    className="bg-white rounded-lg p-8 mb-6"
-                    style={{ border: "4px solid black" }}
+                    className="p-8 mb-6"
                 >
                     <p
                         className="text-gray-800 text-lg mb-4"

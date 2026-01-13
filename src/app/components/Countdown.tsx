@@ -9,9 +9,9 @@ interface TimeLeft {
     seconds: number;
 }
 
-// July 23, 2025 at 10:00 AM PST (UTC-8)
-// Convert to UTC: 10:00 AM PST = 6:00 PM UTC
-const TARGET_DATE = new Date("2027-12-06T02:00:00.000Z").getTime();
+// March 21, 2026 at 9:00 AM PST (UTC-8)
+// Convert to UTC: 9:00 AM PST = 5:00 PM UTC
+const TARGET_DATE = new Date("2026-03-21T17:00:00.000Z").getTime();
 
 const calculateTimeLeft = (): TimeLeft => {
     const currentTime = Date.now();

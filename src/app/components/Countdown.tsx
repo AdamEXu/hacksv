@@ -9,9 +9,10 @@ interface TimeLeft {
     seconds: number;
 }
 
-// March 21, 2026 at 9:00 AM PST (UTC-8)
-// Convert to UTC: 9:00 AM PST = 5:00 PM UTC
-const TARGET_DATE = new Date("2026-03-21T17:00:00.000Z").getTime();
+// March 21, 2026 at 9:00 AM Pacific time.
+// Note: by late March, Pacific time is typically PDT (UTC-7), not PST (UTC-8).
+// 9:00 AM PT = 16:00 UTC (if PDT).
+const TARGET_DATE = Date.UTC(2026, 2, 21, 16, 0, 0, 0);
 
 const calculateTimeLeft = (): TimeLeft => {
     const currentTime = Date.now();
@@ -38,42 +39,32 @@ const calculateTimeLeft = (): TimeLeft => {
 };
 
 export default function Countdown() {
-    const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+    // Avoid baking a "snapshot" into the initial server render; compute on mount instead.
+    const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    });
 
     useEffect(() => {
-        const updateCountdown = () => {
-            const newTimeLeft = calculateTimeLeft();
-            setTimeLeft(newTimeLeft);
+        const updateCountdown = () => setTimeLeft(calculateTimeLeft());
 
-            // Auto refresh when countdown hits zero
-            if (
-                newTimeLeft.days === 0 &&
-                newTimeLeft.hours === 0 &&
-                newTimeLeft.minutes === 0 &&
-                newTimeLeft.seconds === 0
-            ) {
-                window.location.reload();
-            }
-        };
-
-        // Initial update
         updateCountdown();
 
-        // Sync to the exact second boundary for precise timing
         const now = Date.now();
         const msUntilNextSecond = 1000 - (now % 1000);
 
-        const syncTimeout = setTimeout(() => {
-            // Update immediately when we hit the second boundary
+        let intervalId: ReturnType<typeof setInterval> | undefined;
+        const timeoutId = setTimeout(() => {
             updateCountdown();
-
-            // Then set up interval that runs exactly every second
-            const timer = setInterval(updateCountdown, 1000);
-
-            return () => clearInterval(timer);
+            intervalId = setInterval(updateCountdown, 1000);
         }, msUntilNextSecond);
 
-        return () => clearTimeout(syncTimeout);
+        return () => {
+            clearTimeout(timeoutId);
+            if (intervalId) clearInterval(intervalId);
+        };
     }, []);
 
     const formatNumber = (num: number): string => {

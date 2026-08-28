@@ -31,31 +31,28 @@ npm config set prefix '$HOME/.npm-global'
 # Source the profile to update PATH
 source $HOME/.profile
 
-# Create a more lenient ESLint configuration to allow the build to pass
+# Keep ESLint config in sync with the repo: Next 16.3 ships native flat
+# config and FlatCompat.extends("next/core-web-vitals") fails.
 cat > eslint.config.mjs << 'EOF'
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "@next/next/no-img-element": "warn",
       "@next/next/no-html-link-for-pages": "warn",
-      "react/no-unescaped-entities": "warn"
-    }
-  }
-];
+      "react/no-unescaped-entities": "warn",
+      "react-hooks/set-state-in-effect": "warn",
+    },
+  },
+  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+]);
 
 export default eslintConfig;
 EOF

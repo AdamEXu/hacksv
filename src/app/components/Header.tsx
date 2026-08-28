@@ -7,6 +7,46 @@ import { usePathname } from "next/navigation";
 import { HeaderProps } from "../types";
 import { CYAN_COLOR } from "../constants";
 
+function HamburgerIcon({
+    isMenuOpen,
+    onToggle,
+}: {
+    isMenuOpen: boolean;
+    onToggle: () => void;
+}) {
+    return (
+        <button
+            onClick={onToggle}
+            className="flex flex-col justify-center items-center w-12 h-12 space-y-2 focus:outline-none"
+            aria-label="Toggle menu"
+        >
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    rotate: isMenuOpen ? 45 : 0,
+                    y: isMenuOpen ? 12 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    opacity: isMenuOpen ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+            <motion.div
+                className="w-8 h-1 bg-white rounded-full"
+                animate={{
+                    rotate: isMenuOpen ? -45 : 0,
+                    y: isMenuOpen ? -12 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+            />
+        </button>
+    );
+}
+
 // Header Component
 export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -74,39 +114,6 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
         setIsMenuOpen(false);
     };
 
-    // Hamburger Icon Component
-    const HamburgerIcon = () => (
-        <button
-            onClick={toggleMenu}
-            className="flex flex-col justify-center items-center w-12 h-12 space-y-2 focus:outline-none"
-            aria-label="Toggle menu"
-        >
-            <motion.div
-                className="w-8 h-1 bg-white rounded-full"
-                animate={{
-                    rotate: isMenuOpen ? 45 : 0,
-                    y: isMenuOpen ? 12 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-            />
-            <motion.div
-                className="w-8 h-1 bg-white rounded-full"
-                animate={{
-                    opacity: isMenuOpen ? 0 : 1,
-                }}
-                transition={{ duration: 0.3 }}
-            />
-            <motion.div
-                className="w-8 h-1 bg-white rounded-full"
-                animate={{
-                    rotate: isMenuOpen ? -45 : 0,
-                    y: isMenuOpen ? -12 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-            />
-        </button>
-    );
-
     return (
         <>
             <header
@@ -121,7 +128,10 @@ export function Header({ logoY, logoScale, logoReady, isMobile }: HeaderProps) {
                     <>
                         {/* Mobile Header - Top Row */}
                         <div className="flex items-center justify-between w-full h-[132px] px-6">
-                            <HamburgerIcon />
+                            <HamburgerIcon
+                                isMenuOpen={isMenuOpen}
+                                onToggle={toggleMenu}
+                            />
                             {/* Empty div for spacing - logo is positioned absolutely */}
                             <div></div>
                         </div>

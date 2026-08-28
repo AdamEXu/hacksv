@@ -23,7 +23,6 @@
         "unified": "^11.0.5"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.3.6",
         "@tailwindcss/postcss": "^4.3.3",
         "@types/node": "^26.4.0",
         "@types/react": "^19.2.18",

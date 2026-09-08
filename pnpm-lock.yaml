@@ -12,8 +12,8 @@ importers:
         specifier: ^0.5.20
         version: 0.5.20(tailwindcss@4.3.3)
       framer-motion:
-        specifier: ^13.1.1
-        version: 13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^13.2.0
+        version: 13.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       lenis:
         specifier: ^1.3.26
         version: 1.3.26(react@19.2.8)
@@ -21,8 +21,8 @@ importers:
         specifier: ^16.3.4
         version: 16.3.4(@babel/core@7.29.7)(@types/node@26.4.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       posthog-js:
-        specifier: ^1.422.1
-        version: 1.422.1(@types/react@19.2.18)(react@19.2.8)
+        specifier: ^1.424.0
+        version: 1.424.0(@types/react@19.2.18)(react@19.2.8)
       posthog-node:
         specifier: ^5.51.6
         version: 5.51.6
@@ -480,20 +480,20 @@ packages:
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
 
-  '@posthog/browser-common@0.6.1':
-    resolution: {integrity: sha512-dhx4CFm9FnyfJYiEGFtH5HWvhDm/6zAUPUG+euDBO8rYE92fAoBtplmxoqe6E3RD49HyOIyDJv93iBwrcxxBrQ==}
-
-  '@posthog/core@1.49.1':
-    resolution: {integrity: sha512-jdZh85tG56OXLH881CVwBZyiXCPPaZasfYeWwm9kVUvxC/Rb+lz7wYN9GuqSEmNPJgVnK4v8wS0bCaFc3OmVEA==}
+  '@posthog/browser-common@0.7.3':
+    resolution: {integrity: sha512-663KkV0SlP4SqrhdMZG0VumuXc8Aq602il6Z/M48ZUjIPMHZW65bzGIh1Sqfzd9ryjKOxdpOOQy9vCCL0zhXXQ==}
 
   '@posthog/core@1.50.2':
     resolution: {integrity: sha512-El7y/ipZ45OFBRTN/+ixat9Nw21bW+pKKnX0G+rG4rWxBtDA47Ub/ZUnHvZNhAufNInQr4AYCUeWQsuJsTcoKg==}
 
-  '@posthog/types@1.407.0':
-    resolution: {integrity: sha512-7J/aFVi7JWFt/ekGVsMFvkTcADoE9MTNf1N9cpBSMUQ/SPLiBjbg386Fzk5OlgWG/u5OemBy4wlgD7YebqeppQ==}
+  '@posthog/core@1.51.0':
+    resolution: {integrity: sha512-LilmmtjcrjV1LgaVNQXrAUt4IXcWIYMrwEtx6VJUUFDeBBdmeI99jshKGtAWugYeB3Wkcp9xQIVCrxIYRpNiRA==}
 
   '@posthog/types@1.408.0':
     resolution: {integrity: sha512-xMY8QrRKsTYu4A4Of7XF/xEt0HcnZOWwnICm3do7tGKA0lTlnnr4YW0AHQN1Uv2P3BDqf5GQoqh91MKE+dgdcA==}
+
+  '@posthog/types@1.409.2':
+    resolution: {integrity: sha512-hZ4EXZ1+BstMaxUkmAEg3qvgMR/S00Xb+wEwY/Tx2Dr9dBgiBWrERxaq2UwICh/Fh/vVXpKZT/0SkRtO8JKQ2A==}
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -1309,8 +1309,8 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
-  framer-motion@13.1.1:
-    resolution: {integrity: sha512-B/xn2TPS4f61cEBLFjiYlQFnBZUW1YVj/LM+C+N4OP8Rs95VLEI2ot/RlfBg111la/EiyECFaJJi/A3FWA8MUA==}
+  framer-motion@13.2.0:
+    resolution: {integrity: sha512-9E33ebgMaO33w1nN/jEdW8z3/GO483fMi4rqbMG9rt83XgW9QLKRe4NcmJ8s+fQ3O34++UHrIQwlIWGIWTITjA==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
@@ -1892,8 +1892,8 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  motion-dom@13.1.1:
-    resolution: {integrity: sha512-XSf8VYWSB6G/0IY3rWVbyLcxWXtAVHkN1PQE2agTaCv3u8RGvbwu56TyyR/MNzBqqNavEBTZzErcxI1TxBrjcA==}
+  motion-dom@13.2.0:
+    resolution: {integrity: sha512-N6gdSoWRDk0Rh/fVtlqUtLs+fEN3ELFZI3cn3IQE9Mnf3E+Mh8wjO6MstzCOPFh4Yf0L1as5m2eUyYWj8ylVSQ==}
 
   motion-utils@13.0.0:
     resolution: {integrity: sha512-7DnN7TmbLcYXcG4RVadXIihWlyuM9afoUww8Y5Agg431kGKiuL2/OMyP4mJ5wLz+pvN3t5ySClLOaVXJ+wekRQ==}
@@ -2036,8 +2036,8 @@ packages:
     resolution: {integrity: sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  posthog-js@1.422.1:
-    resolution: {integrity: sha512-T0jOnq85RV0tvlmoFTShqulU753Yd9v5QdfbT7mxZnloky9feTqtUULxl28KHQdhpbgfZnj4WJkMBXhNH2z+TA==}
+  posthog-js@1.424.0:
+    resolution: {integrity: sha512-owEiZm26dJe7THtRvgMuKRJ0RS7GhZieL42PVcDN8IWzHdDL2VMEIX6bcIN8+HmK9Jleih7cyhPjw8o3GxRC3w==}
     peerDependencies:
       '@types/react': '>=16.8.0'
       react: '>=16.8.0'
@@ -2396,11 +2396,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  web-vitals@5.3.0:
-    resolution: {integrity: sha512-q6LWsLatGYZp5VGBIOvbTj6JBV2nOmC8KvWztXBmwJcfFAzhwKwbOxhUH306XY3CcaZDUlSmSuNPBsCn0bFu+g==}
-
-  web-vitals@6.0.0:
-    resolution: {integrity: sha512-Guaibvy/+uNtL6Bsu4jmMJGzuSl91oeRH5iO9pPRbYftnFUr3yqT1TUNX/OE4o9HexuEMU3Kb/Wg7iKhlffZUA==}
+  web-vitals@6.2.1:
+    resolution: {integrity: sha512-rLcLXA2sx6+9dE88NHFubwTtGxpK4yYBLj6qHPdFoCaLr0cXGb4efOqtKLlm4loGA4OEKHIQKMKzZkKyOh5ctw==}
 
   which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
@@ -2818,22 +2815,22 @@ snapshots:
 
   '@nolyfill/is-core-module@1.0.39': {}
 
-  '@posthog/browser-common@0.6.1':
+  '@posthog/browser-common@0.7.3':
     dependencies:
-      '@posthog/core': 1.49.1
-      '@posthog/types': 1.407.0
-
-  '@posthog/core@1.49.1':
-    dependencies:
-      '@posthog/types': 1.407.0
+      '@posthog/core': 1.51.0
+      '@posthog/types': 1.409.2
 
   '@posthog/core@1.50.2':
     dependencies:
       '@posthog/types': 1.408.0
 
-  '@posthog/types@1.407.0': {}
+  '@posthog/core@1.51.0':
+    dependencies:
+      '@posthog/types': 1.409.2
 
   '@posthog/types@1.408.0': {}
+
+  '@posthog/types@1.409.2': {}
 
   '@rtsao/scc@1.1.0': {}
 
@@ -3768,9 +3765,9 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  framer-motion@13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  framer-motion@13.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
-      motion-dom: 13.1.1
+      motion-dom: 13.2.0
       motion-utils: 13.0.0
       tslib: 2.8.1
     optionalDependencies:
@@ -4543,7 +4540,7 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  motion-dom@13.1.1:
+  motion-dom@13.2.0:
     dependencies:
       motion-utils: 13.0.0
 
@@ -4702,18 +4699,18 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  posthog-js@1.422.1(@types/react@19.2.18)(react@19.2.8):
+  posthog-js@1.424.0(@types/react@19.2.18)(react@19.2.8):
     dependencies:
-      '@posthog/browser-common': 0.6.1
-      '@posthog/core': 1.49.1
-      '@posthog/types': 1.407.0
+      '@posthog/browser-common': 0.7.3
+      '@posthog/core': 1.50.2
+      '@posthog/types': 1.408.0
       core-js: 3.50.0
       dompurify: 3.4.14
       fflate: 0.4.8
       preact: 10.29.8
       query-selector-shadow-dom: 1.0.1
-      web-vitals: 5.3.0
-      web-vitals-soft-navs: web-vitals@6.0.0
+      web-vitals: 6.2.1
+      web-vitals-soft-navs: web-vitals@6.2.1
     optionalDependencies:
       '@types/react': 19.2.18
       react: 19.2.8
@@ -5220,9 +5217,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  web-vitals@5.3.0: {}
-
-  web-vitals@6.0.0: {}
+  web-vitals@6.2.1: {}
 
   which-boxed-primitive@1.1.1:
     dependencies:

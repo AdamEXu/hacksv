@@ -1,35 +1,35 @@
 {
-    "name": "hacksv",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev -p 3001",
-        "build": "next build",
-        "start": "next start -p 3001",
-        "lint": "eslint ."
-    },
-    "dependencies": {
-        "@tailwindcss/typography": "^0.5.20",
-        "framer-motion": "^13.2.0",
-        "lenis": "^1.3.26",
-        "next": "^16.3.4",
-        "posthog-js": "^1.428.7",
-        "posthog-node": "^5.51.7",
-        "react": "^19.2.8",
-        "react-dom": "^19.2.8",
-        "react-markdown": "^10.1.0",
-        "remark-gfm": "^4.0.1",
-        "remark-parse": "^11.0.0",
-        "unified": "^11.0.5"
-    },
-    "devDependencies": {
-        "@tailwindcss/postcss": "^4.3.3",
-        "@types/node": "^26.4.0",
-        "@types/react": "^19.2.18",
-        "@types/react-dom": "^19.2.7",
-        "eslint": "^9.39.5",
-        "eslint-config-next": "^16.3.4",
-        "tailwindcss": "^4.3.3",
-        "typescript": "^5.9.3"
-    }
+  "name": "hacksv",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.20",
+    "framer-motion": "^13.2.0",
+    "lenis": "^1.3.26",
+    "next": "^16.3.4",
+    "posthog-js": "^1.429.3",
+    "posthog-node": "^5.51.8",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  }
 }

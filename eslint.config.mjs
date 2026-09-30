@@ -16,6 +16,10 @@ const eslintConfig = defineConfig([
       // Keep as warnings so the eslint-config-next 16.3 react-hooks v7 rules
       // do not fail lint on pre-existing, intentional measurement code.
       "react-hooks/set-state-in-effect": "warn",
+      // 16.3.7 flags window.location writes and OAuth Math.random() in
+      // admin/page.tsx as render-time impurity; those run in effects/handlers.
+      "react-hooks/immutability": "warn",
+      "react-hooks/purity": "warn",
     },
   },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
